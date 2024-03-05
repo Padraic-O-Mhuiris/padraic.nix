@@ -1,22 +1,15 @@
 {
   description = "Padraic's NixOS configurations";
 
-  outputs = inputs @ {flake-parts, ...}:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs = inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
       debug = true;
-      imports = [./nix/formatter.nix ./nix/shell.nix ./nix/commit.nix];
-      systems = ["x86_64-linux"];
+      imports = [ ./nix/formatter.nix ./nix/shell.nix ./nix/commit.nix ];
+      systems = [ "x86_64-linux" ];
 
-      perSystem = {
-        config,
-        self',
-        inputs',
-        pkgs,
-        system,
-        ...
-      }: {};
+      perSystem = { config, self', inputs', pkgs, system, ... }: { };
 
-      flake = {};
+      flake = { };
     };
 
   inputs = {
@@ -24,25 +17,37 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
-    fu.url = "github:numtide/flake-utils";
+    flake-utils.url = "github:numtide/flake-utils";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     hardware.url = "github:NixOS/nixos-hardware";
 
-    nixos-anywhere.url = "github:numtide/nixos-anywhere";
-    nixos-anywhere.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-anywhere = {
+      url = "github:numtide/nixos-anywhere";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    sops.url = "github:Mic92/sops-nix";
-    sops.inputs.nixpkgs.follows = "nixpkgs";
+    sops = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nh = {
+      url = "github:viperML/nh";
+      inputs.nixpkgs.follows =
+        "nixpkgs"; # override this repo's nixpkgs snapshot
+    };
 
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "fu";
+      inputs.flake-utils.follows = "flake-utils";
     };
   };
 }

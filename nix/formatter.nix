@@ -1,3 +1,1 @@
-{...}: {
-  perSystem = {pkgs, ...}: {formatter = pkgs.alejandra;};
-}
+_: { perSystem = { pkgs, ... }: { formatter = pkgs.nix-fmt; }; }

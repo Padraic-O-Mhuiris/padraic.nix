@@ -97,7 +97,7 @@
         "type": "github"
       }
     },
-    "fu": {
+    "flake-utils": {
       "inputs": {
         "systems": "systems"
       },
@@ -148,6 +148,26 @@
       "original": {
         "owner": "NixOS",
         "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
+    "nh": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1709278248,
+        "narHash": "sha256-ceZXyzxTLSOrQlcTPQmvQnDV696NNMBwFmVPb9jpX2E=",
+        "owner": "viperML",
+        "repo": "nh",
+        "rev": "6947e6f6f234d303131ecc1e54ef6703c82257e3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "viperML",
+        "repo": "nh",
         "type": "github"
       }
     },
@@ -319,7 +339,7 @@
       "inputs": {
         "flake-compat": "flake-compat",
         "flake-utils": [
-          "fu"
+          "flake-utils"
         ],
         "gitignore": "gitignore",
         "nixpkgs": [
@@ -345,8 +365,9 @@
       "inputs": {
         "disko": "disko",
         "flake-parts": "flake-parts",
-        "fu": "fu",
+        "flake-utils": "flake-utils",
         "hardware": "hardware",
+        "nh": "nh",
         "nixos-anywhere": "nixos-anywhere",
         "nixpkgs": "nixpkgs",
         "nixpkgs-master": "nixpkgs-master",

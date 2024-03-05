@@ -1,14 +1,7 @@
-{...}: {
-  perSystem = {
-    config,
-    self',
-    inputs',
-    pkgs,
-    system,
-    ...
-  }: {
+_: {
+  perSystem = { config, self', inputs', pkgs, system, ... }: {
     devShells.default = pkgs.mkShell {
-      packages = with pkgs; [alejandra git nodePackages.prettier];
+      packages = with pkgs; [ nixfmt git nodePackages.prettier ];
       name = "[padraic.nix]";
       DIRENV_LOG_FORMAT = "";
       shellHook = ''
