@@ -1,1 +1,1 @@
-_: { perSystem = { pkgs, ... }: { formatter = pkgs.nix-fmt; }; }
+_: { perSystem = { pkgs, ... }: { formatter = pkgs.nixfmt; }; }

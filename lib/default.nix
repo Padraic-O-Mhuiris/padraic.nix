@@ -1,3 +1,8 @@
 { inputs, ... }:
-let inherit (inputs.nixpkgs-lib) lib;
-in { flake = { lib = lib // { }; }; }
+
+let l = inputs.nixpkgs.lib;
+in {
+  _module.args = { inherit l; };
+
+  flake = { inherit l; };
+}

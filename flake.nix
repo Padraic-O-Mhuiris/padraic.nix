@@ -4,26 +4,22 @@
   outputs = inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       debug = true;
-      imports = [ ./nix/formatter.nix ./nix/shell.nix ./nix/commit.nix ./lib ];
+      imports = [ ./nix ./lib ./hosts ];
       systems = [ "x86_64-linux" ];
-
       perSystem = { config, self', inputs', pkgs, system, ... }: { };
-
       flake = { };
     };
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    nixpkgs = { url = "github:nixos/nixpkgs/nixos-23.11"; };
+    nixpkgs-unstable = { url = "github:NixOS/nixpkgs/nixos-unstable"; };
+    nixpkgs-master = { url = "github:nixos/nixpkgs/master"; };
 
-    nixpkgs-lib.url = "github:nix-community/nixpkgs.lib/master/";
+    flake-utils = { url = "github:numtide/flake-utils"; };
 
-    flake-utils.url = "github:numtide/flake-utils";
+    flake-parts = { url = "github:hercules-ci/flake-parts"; };
 
-    flake-parts.url = "github:hercules-ci/flake-parts";
-
-    hardware.url = "github:NixOS/nixos-hardware";
+    hardware = { url = "github:NixOS/nixos-hardware"; };
 
     nixos-anywhere = {
       url = "github:numtide/nixos-anywhere";
