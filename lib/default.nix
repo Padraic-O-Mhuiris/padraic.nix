@@ -1,6 +1,12 @@
 { inputs, ... }:
 
-let l = inputs.nixpkgs.lib;
+let
+  l = inputs.nixpkgs.lib.extend (_: lib: {
+
+    isZfsFilesystem = cfg:
+      l.lists.elem "zfs"
+      (cfg.boot.supportedFilesystems ++ cfg.boot.initrd.supportedFilesystems);
+  });
 in {
   _module.args = { inherit l; };
 

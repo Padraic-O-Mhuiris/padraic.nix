@@ -1,20 +1,37 @@
-{ self, inputs, l, config, ... }:
+{ self, inputs, l, ... }:
 
 {
-  flake = {
-    nixosConfigurations = let
-      inherit (l) nixosSystem;
-      specialArgs = { };
-    in {
-      Hydrogen = nixosSystem {
-        inherit specialArgs;
-        modules = [ ./Hydrogen ];
-      };
+  flake.nixosConfigurations = let
+    inherit (l) nixosSystem;
 
-      Oxygen = nixosSystem {
-        inherit specialArgs;
-        modules = [ ./Oxygen ];
-      };
+    root = "${self}/system";
+
+    specialArgs = {
+      inherit inputs;
+      inherit l;
+    };
+  in {
+
+    # Hydrogen is my personal laptop
+    Hydrogen = nixosSystem {
+      inherit specialArgs;
+      modules = [
+        ./Hydrogen
+        "${root}"
+        "${root}/boot/systemd.nix"
+        "${root}/fs/zfs-persist.nix"
+      ];
+    };
+
+    # Oxygen is my personal desktop pc
+    Oxygen = nixosSystem {
+      inherit specialArgs;
+      modules = [
+        ./Oxygen
+        "${root}"
+        "${root}/boot/systemd.nix"
+        "${root}/fs/zfs-persist.nix"
+      ];
     };
   };
 }

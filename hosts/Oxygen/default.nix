@@ -1,6 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [ ./boot.nix ];
+
+  disko.devices.disk = import ./disk.nix;
+
   networking.hostName = "Oxygen";
-  nixpkgs.hostPlatform = "x86_64-linux";
+  networking.hostId = "83b0a257";
 }

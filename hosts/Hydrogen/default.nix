@@ -1,6 +1,10 @@
-{ config, lib, pkgs, ... }:
+_:
 
 {
+  imports = [ ./boot.nix ];
+
+  disko.devices.disk = import ./disk.nix;
+
   networking.hostName = "Hydrogen";
-  nixpkgs.hostPlatform = "x86_64-linux";
+  networking.hostId = "3f90d23a";
 }
