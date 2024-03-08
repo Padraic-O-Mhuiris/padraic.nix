@@ -1,4 +1,4 @@
-{ config, l, ... }:
+{ config, ... }:
 
 {
   imports = [ ./ssh.nix ];

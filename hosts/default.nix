@@ -24,8 +24,6 @@
         "${system}/boot/systemd.nix"
         "${system}/fs/zfs-persist.nix"
 
-        "${system}/networking/wifi.nix"
-
         "${users}"
         "${users}/home.nix"
         "${users}/padraic.nix"
