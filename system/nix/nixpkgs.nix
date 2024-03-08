@@ -1,1 +1,1 @@
-{ nixpkgs = { config.allowUnfree = false; }; }
+{ l, ... }: { nixpkgs = { config.allowUnfree = l.mkDefault true; }; }
