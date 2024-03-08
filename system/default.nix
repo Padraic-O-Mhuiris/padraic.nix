@@ -4,7 +4,9 @@
 { l, modulesPath, ... }:
 
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ./boot ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ./boot ./nix ];
+
+  environment.systemPackages = with pkgs; [ git coreutils vim ];
 
   time.timeZone = l.mkDefault "Europe/Dublin";
   system.stateVersion = l.mkDefault "24.05";
