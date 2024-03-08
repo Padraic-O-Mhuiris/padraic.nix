@@ -41,6 +41,8 @@
         "${system}/boot/systemd.nix"
         "${system}/fs/zfs-persist.nix"
 
+        "${system}/display/xserver.nix"
+
         "${users}"
         "${users}/home.nix"
         "${users}/padraic.nix"

@@ -16,7 +16,7 @@
 
   home-manager.users.padraic = { ... }: {
     # NOTE All /home related modules should be specified here
-    imports = [ "${home}" ];
+    imports = [ "${home}" "${home}/windowManager/i3" ];
     home.homeDirectory = "/home/padraic";
   };
 
