@@ -1,10 +1,15 @@
 # This is the root configuration file for all configuration which will be
 # shared amongst all hosts.
 
-{ l, modulesPath, ... }:
+{ pkgs, l, modulesPath, ... }:
 
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ./boot ./nix ];
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+    ./boot
+    ./nix
+    ./networking
+  ];
 
   environment.systemPackages = with pkgs; [ git coreutils vim ];
 
