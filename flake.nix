@@ -4,15 +4,14 @@
   outputs = inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       debug = true;
-      imports = [ ./nix ./lib ./hosts ];
+      imports = [ ./nix ./lib ./hosts ./iso ];
       systems = [ "x86_64-linux" ];
       perSystem = { config, self', inputs', pkgs, system, ... }: { };
       flake = { };
     };
 
   inputs = {
-    nixpkgs = { url = "github:nixos/nixpkgs/nixos-23.11"; };
-    nixpkgs-unstable = { url = "github:NixOS/nixpkgs/nixos-unstable"; };
+    nixpkgs = { url = "github:NixOS/nixpkgs/nixos-unstable"; };
     nixpkgs-master = { url = "github:nixos/nixpkgs/master"; };
 
     flake-utils = { url = "github:numtide/flake-utils"; };

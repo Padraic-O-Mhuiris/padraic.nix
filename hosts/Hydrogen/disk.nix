@@ -5,7 +5,6 @@
     content = {
       type = "gpt";
       partitions = {
-
         ESP = {
           type = "EF00";
           size = "64M";
