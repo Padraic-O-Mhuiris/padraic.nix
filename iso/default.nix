@@ -32,7 +32,7 @@ let
 
         services.openssh.enable = true;
 
-        environment.systemPackages = with pkgs; [ vim git ];
+        environment.systemPackages = with pkgs; [ vim git rsync ];
 
         users.extraUsers.root.openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEFlro/QUDlDpaA1AQxdWIqBg9HSFJf9Cb7CPdsh0JN7"
