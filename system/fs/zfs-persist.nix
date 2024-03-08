@@ -5,7 +5,10 @@
 { inputs, pkgs, l, ... }:
 
 {
-  imports = [ inputs.disko.nixosModules.disko ];
+  imports = [
+    inputs.disko.nixosModules.disko
+    inputs.impermanence.nixosModules.impermanence
+  ];
 
   boot = {
     initrd.postDeviceCommands = l.mkAfter ''
@@ -23,6 +26,21 @@
   environment.systemPackages = [ pkgs.zfs-prune-snapshots ];
 
   fileSystems."/persist".neededForBoot = true;
+
+  environment.persistence."/persist" = {
+    files = [
+      "/etc/machine-id"
+      "/etc/ssh/ssh_host_ed25519_key"
+      "/etc/ssh/ssh_host_ed25519_key.pub"
+    ];
+    directories = [
+      "/var/log"
+      "/var/lib/bluetooth"
+      "/var/lib/nixos"
+      "/var/lib/systemd/coredump"
+      "/etc/NetworkManager/system-connections"
+    ];
+  };
 
   services.zfs = {
     autoScrub.enable = true;
