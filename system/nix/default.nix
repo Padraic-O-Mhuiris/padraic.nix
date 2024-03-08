@@ -2,7 +2,7 @@
 
 {
 
-  imports = [ ./nixpkgs ./subsituters.nix ];
+  imports = [ ./nixpkgs.nix ./subsituters.nix ];
 
   nix = {
     # pin the registry to avoid downloading and evaling a new nixpkgs version every time
