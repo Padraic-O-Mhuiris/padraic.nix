@@ -4,11 +4,14 @@
   flake.nixosConfigurations = let
     inherit (l) nixosSystem;
 
-    root = "${self}/system";
+    system = "${self}/system";
+    users = "${self}/users";
+    home = "${self}/home";
 
     specialArgs = {
       inherit inputs;
       inherit l;
+      inherit home;
     };
   in {
 
@@ -17,9 +20,13 @@
       inherit specialArgs;
       modules = [
         ./Hydrogen
-        "${root}"
-        "${root}/boot/systemd.nix"
-        "${root}/fs/zfs-persist.nix"
+        "${system}"
+        "${system}/boot/systemd.nix"
+        "${system}/fs/zfs-persist.nix"
+
+        "${users}"
+        "${users}/home.nix"
+        "${users}/padraic.nix"
       ];
     };
 
@@ -28,9 +35,13 @@
       inherit specialArgs;
       modules = [
         ./Oxygen
-        "${root}"
-        "${root}/boot/systemd.nix"
-        "${root}/fs/zfs-persist.nix"
+        "${system}"
+        "${system}/boot/systemd.nix"
+        "${system}/fs/zfs-persist.nix"
+
+        "${users}"
+        "${users}/home.nix"
+        "${users}/padraic.nix"
       ];
     };
   };

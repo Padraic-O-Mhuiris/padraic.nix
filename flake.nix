@@ -12,6 +12,7 @@
 
   inputs = {
     nixpkgs = { url = "github:NixOS/nixpkgs/nixos-unstable"; };
+
     nixpkgs-master = { url = "github:nixos/nixpkgs/master"; };
 
     flake-utils = { url = "github:numtide/flake-utils"; };
@@ -22,6 +23,11 @@
 
     nixos-anywhere = {
       url = "github:numtide/nixos-anywhere";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
