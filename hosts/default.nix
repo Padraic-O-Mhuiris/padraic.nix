@@ -70,7 +70,6 @@ in {
           "${system}/display/xserver.nix"
           "${system}/hardware/keyboard.nix"
 
-          { services.xserver.displayManager.autoLogin.user = "padraic"; }
           "${vm'}"
 
           "${users}"
