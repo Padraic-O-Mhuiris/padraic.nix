@@ -23,6 +23,7 @@
       "${home}/services/bluetooth.nix"
       "${home}/programs/git.nix"
       "${home}/infosec/gnupg.nix"
+      "${home}/infosec/pass.nix"
     ];
 
     home.homeDirectory = "/home/padraic";
