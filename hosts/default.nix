@@ -5,7 +5,9 @@ let
 
   system = "${self}/system";
   users = "${self}/users";
+  hosts = "${self}/hosts";
   home = "${self}/home";
+  secrets = "${self}/secrets";
 
   vm' = "${self}/vm";
 
@@ -13,6 +15,7 @@ let
     inherit inputs;
     inherit l;
     inherit home;
+    inherit hosts;
   };
 
 in {
@@ -44,11 +47,13 @@ in {
         "${users}"
         "${users}/home.nix"
         "${users}/padraic.nix"
+
+        "${secrets}"
       ];
     };
 
-    # Oxygen is my personal desktop pc
     Oxygen = nixosSystem {
+      # Oxygen is my personal desktop pc
       inherit specialArgs;
       modules = [
         {
@@ -72,6 +77,8 @@ in {
         "${users}"
         "${users}/home.nix"
         "${users}/padraic.nix"
+
+        "${secrets}"
       ];
     };
   };
@@ -129,6 +136,14 @@ in {
         --debug \
         --flake ${self}#Oxygen root@192.168.0.214
       '';
+
+      # TODO Make more general
+      editHostSecrets = pkgs.writeShellScriptBin "editHostSecrets" ''
+        EDITOR=${pkgs.vim}/bin/vim \
+        SOPS_AGE_KEY=$(${pkgs.ssh-to-age}/bin/ssh-to-age -private-key <<< $(${pkgs.pass}/bin/pass show os/users/padraic/id_ed25519)) \
+        ${pkgs.sops}/bin/sops $HOME/code/nix/nixos-configuration/hosts/Oxygen/secrets.yaml
+      '';
+
     };
   };
 }
