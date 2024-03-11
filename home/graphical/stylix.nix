@@ -45,7 +45,7 @@ in {
         desktop = 10;
         popups = 22;
         terminal =
-          if nixosConfig.networking.hostName == "Oxygen" then 10 else 18;
+          if nixosConfig.networking.hostName == "Oxygen" then 14 else 18;
       };
     };
   };
