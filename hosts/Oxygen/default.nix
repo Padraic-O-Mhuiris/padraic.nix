@@ -1,7 +1,7 @@
 _:
 
 {
-  imports = [ ./boot.nix ./hardware.nix ];
+  imports = [ ./boot.nix ./hardware.nix ./monitors.nix ];
 
   disko.devices.disk = import ./disk.nix;
 
