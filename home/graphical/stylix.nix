@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, nixosConfig, pkgs, ... }:
 
 let
   serif = {
@@ -27,6 +27,9 @@ in {
   };
   stylix = {
     targets = {
+      btop.enable = true;
+      rofi.enable = true;
+      tmux.enable = true;
       gtk.enable = true;
       gnome.enable = true;
       alacritty.enable = true;
@@ -34,13 +37,15 @@ in {
       i3.enable = true;
       xresources.enable = true;
     };
+    cursor.size = 24;
     fonts = {
       inherit serif sansSerif monospace emoji;
       sizes = {
         applications = 11;
         desktop = 10;
         popups = 22;
-        terminal = 18;
+        terminal =
+          if nixosConfig.networking.hostName == "Oxygen" then 10 else 18;
       };
     };
   };
