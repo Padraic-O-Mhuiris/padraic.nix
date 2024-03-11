@@ -15,7 +15,7 @@
     shellAliases = {
       # TODO Create default filesystem location for this nixos repository
       "nr" =
-        "sudo nixos-rebuild --flake $HOME/code/nix/nixos-configuration#${nixosConfig.networking.hostName} switch --show-trace --verbose";
+        "sudo nixos-rebuild --flake $HOME/code/nix/padraic.nix#${nixosConfig.networking.hostName} switch --show-trace --verbose";
     };
   };
 
