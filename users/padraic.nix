@@ -42,6 +42,18 @@
 
     home.homeDirectory = "/home/padraic";
 
+    # TODO Move these to somewhere
+    home.packages = with pkgs; [
+      gimp-with-plugins
+      zoom-us
+      slack
+      element-desktop
+      discord
+      spotify
+      telegram-desktop
+      libreoffice
+    ];
+
     programs = {
       git = {
         userEmail = "patrick.morris.310@gmail.com";
