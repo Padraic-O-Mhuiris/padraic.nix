@@ -35,6 +35,8 @@
       "${home}/editors/emacs.nix"
 
       "${home}/services/bluetooth.nix"
+      "${home}/services/redshift.nix"
+
       "${home}/programs/git.nix"
       "${home}/infosec/gnupg.nix"
       "${home}/infosec/pass.nix"
