@@ -16,7 +16,8 @@
 
   home-manager.users.padraic = { ... }: {
     # NOTE All /home related modules should be specified here
-    imports = [ "${home}" "${home}/windowManager/i3" ];
+    imports =
+      [ "${home}" "${home}/windowManager/i3" "${home}/services/bluetooth.nix" ];
     home.homeDirectory = "/home/padraic";
   };
 

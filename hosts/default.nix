@@ -27,8 +27,10 @@ in {
         "${system}/fs/zfs-persist.nix"
 
         "${system}/display/xserver.nix"
+
         "${system}/hardware/keyboard.nix"
         "${system}/hardware/audio.nix"
+        "${system}/hardware/bluetooth.nix"
 
         "${users}"
         "${users}/home.nix"
@@ -48,6 +50,7 @@ in {
         "${system}/display/xserver.nix"
         "${system}/hardware/keyboard.nix"
         "${system}/hardware/audio.nix"
+        "${system}/hardware/bluetooth.nix"
 
         "${users}"
         "${users}/home.nix"
