@@ -1,5 +1,6 @@
-{ config, lib, pkgs, ... }: {
+{ config, l, ... }:
 
+{
   programs.alacritty = {
     enable = true;
     settings = {
@@ -12,6 +13,6 @@
   };
 
   home.sessionVariables = {
-    TERMINAL = "${lib.getExe' config.programs.alacritty.package "alacritty"}";
+    TERMINAL = "${l.getExe' config.programs.alacritty.package "alacritty"}";
   };
 }

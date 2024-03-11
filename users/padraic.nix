@@ -26,7 +26,7 @@
     # NOTE All /home related modules should be specified here
     imports = [
       "${home}"
-      "${home}/windowManager/i3"
+      "${home}/graphical/i3"
 
       "${home}/browsers"
 
