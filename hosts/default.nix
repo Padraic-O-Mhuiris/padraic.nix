@@ -114,6 +114,7 @@ in {
       }).config.system.build)
         vm;
 
+      # TODO Add user ssh bootstrapping so that user ssh private key is available on initial setup
       deployOxygen = pkgs.writeShellScriptBin "deployOxygen" ''
         temp=$(mktemp -d)
 
