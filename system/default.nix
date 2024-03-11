@@ -18,6 +18,7 @@
     clang
     cmake
     curl
+    dbus
     du-dust
     entr
     git
@@ -50,6 +51,9 @@
   };
 
   time.timeZone = l.mkDefault "Europe/Dublin";
+
+  # TODO Move this somewhere?
+  services.dbus.packages = [ pkgs.gcr ];
 
   system.stateVersion = l.mkDefault "24.05";
 }
