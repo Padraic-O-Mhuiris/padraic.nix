@@ -27,6 +27,7 @@
 
   fileSystems."/persist".neededForBoot = true;
 
+  # TODO Generalize this somewhere
   environment.persistence."/persist" = {
     files = [
       "/etc/machine-id"
@@ -35,6 +36,7 @@
     ];
     directories = [
       "/var/log"
+      "/var/db/sudo"
       "/var/lib/bluetooth"
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"
