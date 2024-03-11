@@ -38,6 +38,8 @@ in {
 
         "${system}/display/xserver.nix"
 
+        "${system}/graphical/stylix.nix"
+
         "${system}/hardware/keyboard.nix"
         "${system}/hardware/audio.nix"
         "${system}/hardware/bluetooth.nix"
@@ -70,6 +72,9 @@ in {
         "${system}/fs/zfs-persist.nix"
 
         "${system}/display/xserver.nix"
+
+        "${system}/graphical/stylix.nix"
+
         "${system}/hardware/keyboard.nix"
         "${system}/hardware/audio.nix"
         "${system}/hardware/bluetooth.nix"
@@ -104,6 +109,8 @@ in {
 
           "${system}"
           "${system}/display/xserver.nix"
+          "${system}/graphical/stylix.nix"
+
           "${system}/hardware/keyboard.nix"
 
           "${vm'}"

@@ -49,6 +49,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix = { url = "github:danth/stylix"; };
+
     nh = {
       url = "github:viperML/nh";
       inputs.nixpkgs.follows =
