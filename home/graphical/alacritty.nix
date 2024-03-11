@@ -8,11 +8,12 @@
         x = 10;
         y = 10;
       };
-      scale_with_dpi = false;
     };
   };
 
   home.sessionVariables = {
     TERMINAL = "${l.getExe' config.programs.alacritty.package "alacritty"}";
+    # https://alacritty.org/config-alacritty.html ENV
+    WINIT_X11_SCALE_FACTOR = 1;
   };
 }
