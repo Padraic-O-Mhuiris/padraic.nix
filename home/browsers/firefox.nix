@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, l, pkgs, ... }:
 
 let
   package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
@@ -136,6 +136,7 @@ let
     "browser.tabs.tabMinWidth" = 66;
     "browser.tabs.tabClipWidth" = 86;
     "browser.tabs.tabmanager.enabled" = false;
+    "browser.tabs.firefox-view" = false;
     "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
     "layers.acceleration.force-enabled" = true;
     "layout.css.devPixelsPerPx" = 0.9;
@@ -147,7 +148,6 @@ in {
   programs.firefox = {
     enable = true;
     inherit package;
-
     profiles."${config.home.username}" = {
       id = 0;
       isDefault = true;
@@ -155,4 +155,6 @@ in {
       inherit search extensions settings;
     };
   };
+
+  home.sessionVariables."BROWSER" = l.getExe package;
 }
