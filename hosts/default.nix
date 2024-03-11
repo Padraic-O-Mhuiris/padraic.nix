@@ -28,6 +28,7 @@ in {
 
         "${system}/display/xserver.nix"
         "${system}/hardware/keyboard.nix"
+        "${system}/hardware/audio.nix"
 
         "${users}"
         "${users}/home.nix"
@@ -46,6 +47,7 @@ in {
 
         "${system}/display/xserver.nix"
         "${system}/hardware/keyboard.nix"
+        "${system}/hardware/audio.nix"
 
         "${users}"
         "${users}/home.nix"
