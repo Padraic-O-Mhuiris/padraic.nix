@@ -3,8 +3,14 @@
 let modifier = "Mod4";
 in {
 
-  imports =
-    [ ../xsession.nix ../rofi.nix ../alacritty.nix ../fonts.nix ../stylix.nix ];
+  imports = [
+    ../xsession.nix
+    ../rofi.nix
+    ../alacritty.nix
+    ../fonts.nix
+    ../stylix.nix
+    ../dunst.nix
+  ];
 
   xsession.windowManager.i3 = {
     enable = true;
