@@ -36,8 +36,7 @@ in {
         "${system}/boot/systemd.nix"
         "${system}/fs/zfs-persist.nix"
 
-        "${system}/display/xserver.nix"
-
+        "${system}/graphical/xserver.nix"
         "${system}/graphical/stylix.nix"
 
         "${system}/hardware/keyboard.nix"
@@ -71,8 +70,7 @@ in {
         "${system}/boot/systemd.nix"
         "${system}/fs/zfs-persist.nix"
 
-        "${system}/display/xserver.nix"
-
+        "${system}/graphical/xserver.nix"
         "${system}/graphical/stylix.nix"
 
         "${system}/hardware/keyboard.nix"
@@ -108,7 +106,8 @@ in {
           }
 
           "${system}"
-          "${system}/display/xserver.nix"
+
+          "${system}/graphical/xserver.nix"
           "${system}/graphical/stylix.nix"
 
           "${system}/hardware/keyboard.nix"
