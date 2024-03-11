@@ -32,6 +32,7 @@ in {
         "${system}/hardware/audio.nix"
         "${system}/hardware/bluetooth.nix"
         "${system}/hardware/backlight.nix"
+        "${system}/hardware/yubikey.nix"
 
         "${users}"
         "${users}/home.nix"
@@ -52,6 +53,7 @@ in {
         "${system}/hardware/keyboard.nix"
         "${system}/hardware/audio.nix"
         "${system}/hardware/bluetooth.nix"
+        "${system}/hardware/yubikey.nix"
 
         "${users}"
         "${users}/home.nix"
