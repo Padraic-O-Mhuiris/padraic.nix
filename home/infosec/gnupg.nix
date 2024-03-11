@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.gpg = {
@@ -13,8 +13,7 @@
     enableScDaemon = true;
     grabKeyboardAndMouse = true;
     defaultCacheTtl = 3600;
-    pinentryFlavor =
-      "gnome3"; # TODO Does this depend on gnome deps to be installed?
+    pinentryFlavor = "gnome3";
     # TODO Condition emacs pinentry on whether emacs is installed or not
     extraConfig = ''
       allow-emacs-pinentry
@@ -22,6 +21,8 @@
     '';
     verbose = true;
   };
+
+  home.packages = with pkgs; [ pinentry-gnome ];
 
   systemd.user.sessionVariables.GNUPGHOME = "${config.xdg.dataHome}/gnupg";
 }
