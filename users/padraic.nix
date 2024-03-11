@@ -1,4 +1,4 @@
-{ home, l, config, ... }:
+{ home, ... }:
 
 {
   users.users.padraic = {
@@ -20,6 +20,9 @@
     imports = [
       "${home}"
       "${home}/windowManager/i3"
+
+      "${home}/browsers"
+
       "${home}/services/bluetooth.nix"
       "${home}/programs/git.nix"
       "${home}/infosec/gnupg.nix"

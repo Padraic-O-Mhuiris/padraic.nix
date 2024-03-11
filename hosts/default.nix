@@ -21,6 +21,7 @@ in {
     Hydrogen = nixosSystem {
       inherit specialArgs;
       modules = [
+        { nixpkgs.overlays = [ inputs.nur.overlay ]; }
         ./Hydrogen
         "${system}"
         "${system}/boot/systemd.nix"
@@ -44,6 +45,7 @@ in {
     Oxygen = nixosSystem {
       inherit specialArgs;
       modules = [
+        { nixpkgs.overlays = [ inputs.nur.overlay ]; }
         ./Oxygen
         "${system}"
         "${system}/boot/systemd.nix"
@@ -68,6 +70,8 @@ in {
 
         inherit specialArgs;
         modules = [
+          { nixpkgs.overlays = [ inputs.nur.overlay ]; }
+
           "${system}"
           "${system}/display/xserver.nix"
           "${system}/hardware/keyboard.nix"
