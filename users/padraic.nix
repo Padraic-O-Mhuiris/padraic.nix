@@ -1,9 +1,16 @@
-{ home, ... }:
+{ home, pkgs, ... }:
 
 {
+  # We enable this for clarity but most shell configuration is in home
+  programs.zsh.enable = true;
+
   users.users.padraic = {
     isNormalUser = true;
     createHome = true;
+
+    useDefaultShell = false;
+    shell = pkgs.zsh;
+
     # passwordFile = config.sops.secrets."user@${name}".path;
     # TODO Figure out why sops is not working for this on first installation?
     hashedPassword =
@@ -22,6 +29,8 @@
       "${home}/windowManager/i3"
 
       "${home}/browsers"
+
+      "${home}/shell/zsh"
 
       "${home}/editors/emacs.nix"
 
