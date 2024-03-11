@@ -21,8 +21,9 @@ in {
       GDK_SCALE = "2";
       GDK_DPI_SCALE = "0.5";
     };
+    # Necessary for gtk
+    packages = [ pkgs.dconf ];
   };
-
   stylix = {
     targets = {
       gtk.enable = true;
