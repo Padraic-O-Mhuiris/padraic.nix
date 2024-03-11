@@ -97,7 +97,7 @@ in {
         chmod 600 "$temp/persist/etc/ssh/ssh_host_ed25519_key"
         chmod 644 "$temp/persist/etc/ssh/ssh_host_ed25519_key.pub"
 
-        ${l.getExe inputs'.nixos-anywhere.packages.default} \
+        ${inputs'.nixos-anywhere.packages.default}/bin/nixos-anywhere \
         --disk-encryption-keys /tmp/secret.key <(echo -n $(${
           l.getExe pkgs.pass
         } show os/hosts/Oxygen/disk)) \
