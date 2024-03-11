@@ -4,7 +4,7 @@ l.mkIf config.services.xserver.enable {
   services.xserver = {
     xkb = {
       options = "ctrl:swapcaps";
-      layout = "gb";
+      layout = l.mkDefault "gb";
     };
   };
 
