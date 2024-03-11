@@ -27,6 +27,7 @@ in {
     marksman
     vscode-langservers-extracted
     nodePackages_latest.prettier
+    nodePackages_latest.bash-language-server
     llvmPackages_9.clang-unwrapped
     ccls
     semgrep
