@@ -53,6 +53,7 @@
   time.timeZone = l.mkDefault "Europe/Dublin";
 
   # TODO Move this somewhere?
+  # NOTE Necessary for gnupg gnome3 pinentry
   services.dbus.packages = [ pkgs.gcr ];
 
   system.stateVersion = l.mkDefault "24.05";
