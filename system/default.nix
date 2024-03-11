@@ -11,7 +11,38 @@
     ./networking
   ];
 
-  environment.systemPackages = with pkgs; [ git coreutils vim ];
+  environment.systemPackages = with pkgs; [
+    bc
+    binutils
+    coreutils-full
+    clang
+    cmake
+    curl
+    du-dust
+    entr
+    git
+    file
+    i7z
+    iw
+    libnotify
+    netcat
+    nix-index
+    nix-tree
+    openssl
+    pciutils
+    patchelf
+    usbutils
+    psmisc
+    sd
+    stdenv.cc.cc.lib
+    tree
+    unzip
+    vim
+    whois
+    wget
+    xclip
+    zlib
+  ];
 
   time.timeZone = l.mkDefault "Europe/Dublin";
   system.stateVersion = l.mkDefault "24.05";
