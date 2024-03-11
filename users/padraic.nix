@@ -1,4 +1,5 @@
-{ home, ... }: {
+{ home, l, config, ... }:
+{
   users.users.padraic = {
 
     isNormalUser = true;
@@ -30,5 +31,7 @@
       signing.key = "18F528675193C19214A73F1DEF4CEF1AF71A4EDD";
     };
   };
-
-}
+} // (l.mkIf config.xserver.enable {
+  # Auto login with padraic
+  services.xserver.displayManager.autoLogin.user = "padraic";
+})
