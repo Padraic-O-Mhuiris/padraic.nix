@@ -85,8 +85,12 @@ in {
 
   perSystem = { inputs', pkgs, ... }: {
     packages = {
-      inherit ((nixosSystem {
 
+      # NOTE nix run .\#vm -- --display gtk,full-screen=on,grab-on-hover=on -smp cpus=8 -m size=8192
+      #
+      # TODO Figure out how to run the vm with proper screen resolution
+      # TODO Add qemu flags to command
+      inherit ((nixosSystem {
         inherit specialArgs;
         modules = [
           {
