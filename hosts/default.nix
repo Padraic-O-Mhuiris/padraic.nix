@@ -58,7 +58,8 @@ in {
 
   perSystem = { inputs', pkgs, ... }: {
     packages = {
-      inherit (nixosSystem {
+      inherit ((nixosSystem {
+
         inherit specialArgs;
         modules = [
           "${system}"
@@ -72,7 +73,7 @@ in {
           "${users}/home.nix"
           "${users}/padraic.nix"
         ];
-      }.config.system.build)
+      }).config.system.build)
         vm;
 
       deployOxygen = pkgs.writeShellScriptBin "deployOxygen" ''
