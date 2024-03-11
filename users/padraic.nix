@@ -52,6 +52,7 @@
       spotify
       telegram-desktop
       libreoffice
+      ledger-live-desktop
     ];
 
     programs = {

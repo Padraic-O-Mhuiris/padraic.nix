@@ -43,6 +43,7 @@ in {
         "${system}/hardware/bluetooth.nix"
         "${system}/hardware/backlight.nix"
         "${system}/hardware/yubikey.nix"
+        "${system}/hardware/ledger.nix"
 
         "${users}"
         "${users}/home.nix"
