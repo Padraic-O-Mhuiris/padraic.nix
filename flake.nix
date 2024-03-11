@@ -17,9 +17,13 @@
 
     flake-utils = { url = "github:numtide/flake-utils"; };
 
+    emacs = { url = "github:nix-community/emacs-overlay"; };
+
     flake-parts = { url = "github:hercules-ci/flake-parts"; };
 
     hardware = { url = "github:NixOS/nixos-hardware"; };
+
+    nil = { url = "github:oxalica/nil"; };
 
     nixos-anywhere = {
       url = "github:numtide/nixos-anywhere";

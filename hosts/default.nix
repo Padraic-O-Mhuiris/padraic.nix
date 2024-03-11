@@ -21,7 +21,13 @@ in {
     Hydrogen = nixosSystem {
       inherit specialArgs;
       modules = [
-        { nixpkgs.overlays = [ inputs.nur.overlay ]; }
+        {
+          nixpkgs.overlays = [
+            inputs.nur.overlay
+            inputs.emacs.overlay
+            inputs.nil.overlays.default
+          ];
+        }
         ./Hydrogen
         "${system}"
         "${system}/boot/systemd.nix"
@@ -45,7 +51,13 @@ in {
     Oxygen = nixosSystem {
       inherit specialArgs;
       modules = [
-        { nixpkgs.overlays = [ inputs.nur.overlay ]; }
+        {
+          nixpkgs.overlays = [
+            inputs.nur.overlay
+            inputs.emacs.overlay
+            inputs.nil.overlays.default
+          ];
+        }
         ./Oxygen
         "${system}"
         "${system}/boot/systemd.nix"
@@ -70,7 +82,13 @@ in {
 
         inherit specialArgs;
         modules = [
-          { nixpkgs.overlays = [ inputs.nur.overlay ]; }
+          {
+            nixpkgs.overlays = [
+              inputs.nur.overlay
+              inputs.emacs.overlay
+              inputs.nil.overlays.default
+            ];
+          }
 
           "${system}"
           "${system}/display/xserver.nix"
