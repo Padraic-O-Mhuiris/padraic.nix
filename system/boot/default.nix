@@ -7,4 +7,6 @@
     pkgs.zfs.latestCompatibleLinuxPackages
   else
     pkgs.linuxPackages_latest;
+
+  boot.tmp.cleanOnBoot = true;
 }
