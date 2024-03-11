@@ -15,12 +15,31 @@ let
   };
   emoji = monospace;
 in {
+
+  home = {
+    sessionVariables = {
+      GDK_SCALE = "2";
+      GDK_DPI_SCALE = "0.5";
+    };
+  };
+
   stylix = {
     targets = {
       gtk.enable = true;
       gnome.enable = true;
       alacritty.enable = true;
+      vim.enable = true;
+      i3.enable = true;
+      xresources.enable = true;
     };
-    fonts = { inherit serif sansSerif monospace emoji; };
+    fonts = {
+      inherit serif sansSerif monospace emoji;
+      sizes = {
+        applications = 11;
+        desktop = 10;
+        popups = 22;
+        terminal = 18;
+      };
+    };
   };
 }
