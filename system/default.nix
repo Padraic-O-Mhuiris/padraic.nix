@@ -44,6 +44,12 @@
     zlib
   ];
 
+  location = {
+    latitude = 53.28;
+    longitude = -9.03;
+  };
+
   time.timeZone = l.mkDefault "Europe/Dublin";
+
   system.stateVersion = l.mkDefault "24.05";
 }
