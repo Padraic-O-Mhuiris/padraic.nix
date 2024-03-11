@@ -23,6 +23,8 @@
 
       "${home}/browsers"
 
+      "${home}/editors/emacs.nix"
+
       "${home}/services/bluetooth.nix"
       "${home}/programs/git.nix"
       "${home}/infosec/gnupg.nix"
