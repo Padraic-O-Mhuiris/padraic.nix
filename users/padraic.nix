@@ -16,9 +16,19 @@
 
   home-manager.users.padraic = { ... }: {
     # NOTE All /home related modules should be specified here
-    imports =
-      [ "${home}" "${home}/windowManager/i3" "${home}/services/bluetooth.nix" ];
+    imports = [
+      "${home}"
+      "${home}/windowManager/i3"
+      "${home}/services/bluetooth.nix"
+      "${home}/programs/git.nix"
+    ];
     home.homeDirectory = "/home/padraic";
+
+    programs.git = {
+      userEmail = "patrick.morris.310@gmail.com";
+      userName = "Padraic-O-Mhuiris";
+      signing.key = "18F528675193C19214A73F1DEF4CEF1AF71A4EDD";
+    };
   };
 
 }
