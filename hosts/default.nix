@@ -31,6 +31,7 @@ in {
         "${system}/hardware/keyboard.nix"
         "${system}/hardware/audio.nix"
         "${system}/hardware/bluetooth.nix"
+        "${system}/hardware/backlight.nix"
 
         "${users}"
         "${users}/home.nix"
