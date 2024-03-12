@@ -25,6 +25,7 @@ in {
     # nixfmt
     nil
     marksman
+    emacsPackages.pdf-tools
     vscode-langservers-extracted
     nodePackages_latest.prettier
     nodePackages_latest.bash-language-server
