@@ -22,7 +22,7 @@ in {
     fd
     (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
     rust-analyzer
-    nixfmt
+    # nixfmt
     nil
     marksman
     vscode-langservers-extracted
