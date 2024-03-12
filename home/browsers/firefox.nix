@@ -139,7 +139,6 @@ let
     "browser.tabs.firefox-view" = false;
     "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
     "layers.acceleration.force-enabled" = true;
-    "layout.css.devPixelsPerPx" = 0.9;
     "gfx.webrender.all" = true;
     "svg.context-properties.content.enabled" = true;
     "network.protocol-handler.external.zoommtg" = true; # Needed for zoom
