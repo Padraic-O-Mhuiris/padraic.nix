@@ -45,6 +45,7 @@ in {
         "${system}/hardware/backlight.nix"
         "${system}/hardware/yubikey.nix"
         "${system}/hardware/ledger.nix"
+        "${system}/hardware/external-disks.nix"
 
         "${users}"
         "${users}/home.nix"
@@ -77,6 +78,8 @@ in {
         "${system}/hardware/audio.nix"
         "${system}/hardware/bluetooth.nix"
         "${system}/hardware/yubikey.nix"
+        "${system}/hardware/ledger.nix"
+        "${system}/hardware/external-disks.nix"
 
         "${users}"
         "${users}/home.nix"
