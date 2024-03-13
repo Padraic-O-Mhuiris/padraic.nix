@@ -56,6 +56,7 @@
       telegram-desktop
       libreoffice
       ledger-live-desktop
+      teams-for-linux
     ];
 
     programs = {
