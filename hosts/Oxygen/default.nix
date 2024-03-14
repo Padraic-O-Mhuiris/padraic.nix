@@ -6,7 +6,6 @@ _:
   disko.devices.disk = import ./disk.nix;
 
   services.xserver.displayManager.autoLogin.user = "padraic";
-  services.xserver.xkb.layout = "us";
 
   nixpkgs.hostPlatform = "x86_64-linux";
   networking.hostName = "Oxygen";
