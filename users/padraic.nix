@@ -57,6 +57,7 @@
       libreoffice
       ledger-live-desktop
       teams-for-linux
+      bitwarden
     ];
 
     programs = {
