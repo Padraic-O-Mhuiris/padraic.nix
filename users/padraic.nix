@@ -58,6 +58,7 @@
       ledger-live-desktop
       teams-for-linux
       bitwarden
+      qbittorrent
     ];
 
     programs = {
