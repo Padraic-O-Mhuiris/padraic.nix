@@ -59,6 +59,7 @@
       teams-for-linux
       bitwarden
       qbittorrent
+      vlc
     ];
 
     programs = {
