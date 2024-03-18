@@ -37,6 +37,7 @@
 
       "${home}/services/bluetooth.nix"
       "${home}/services/redshift.nix"
+      "${home}/services/flameshot.nix"
 
       "${home}/programs/git.nix"
       "${home}/infosec/gnupg.nix"
