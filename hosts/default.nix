@@ -18,75 +18,45 @@ let
     inherit hosts;
   };
 
+  common = [
+    {
+      nixpkgs.overlays =
+        [ inputs.nur.overlay inputs.emacs.overlay inputs.nil.overlays.default ];
+    }
+
+    "${system}"
+    "${system}/boot/systemd.nix"
+    "${system}/fs/zfs-persist.nix"
+
+    "${system}/graphical/xserver.nix"
+    "${system}/graphical/stylix.nix"
+
+    "${system}/hardware/keyboard.nix"
+    "${system}/hardware/audio.nix"
+    "${system}/hardware/bluetooth.nix"
+    "${system}/hardware/yubikey.nix"
+    "${system}/hardware/ledger.nix"
+    "${system}/hardware/external-disks.nix"
+
+    "${users}"
+    "${users}/home.nix"
+    "${users}/padraic.nix"
+
+    "${secrets}"
+  ];
+
 in {
   flake.nixosConfigurations = {
     # Hydrogen is my personal laptop
     Hydrogen = nixosSystem {
       inherit specialArgs;
-      modules = [
-        {
-          nixpkgs.overlays = [
-            inputs.nur.overlay
-            inputs.emacs.overlay
-            inputs.nil.overlays.default
-          ];
-        }
-        ./Hydrogen
-        "${system}"
-        "${system}/boot/systemd.nix"
-        "${system}/fs/zfs-persist.nix"
-
-        "${system}/graphical/xserver.nix"
-        "${system}/graphical/stylix.nix"
-
-        "${system}/hardware/keyboard.nix"
-        "${system}/hardware/audio.nix"
-        "${system}/hardware/bluetooth.nix"
-        "${system}/hardware/backlight.nix"
-        "${system}/hardware/yubikey.nix"
-        "${system}/hardware/ledger.nix"
-        "${system}/hardware/external-disks.nix"
-
-        "${users}"
-        "${users}/home.nix"
-        "${users}/padraic.nix"
-
-        "${secrets}"
-      ];
+      modules = [ ./Hydrogen "${system}/hardware/backlight.nix" ] ++ common;
     };
 
     Oxygen = nixosSystem {
       # Oxygen is my personal desktop pc
       inherit specialArgs;
-      modules = [
-        {
-          nixpkgs.overlays = [
-            inputs.nur.overlay
-            inputs.emacs.overlay
-            inputs.nil.overlays.default
-          ];
-        }
-        ./Oxygen
-        "${system}"
-        "${system}/boot/systemd.nix"
-        "${system}/fs/zfs-persist.nix"
-
-        "${system}/graphical/xserver.nix"
-        "${system}/graphical/stylix.nix"
-
-        "${system}/hardware/keyboard.nix"
-        "${system}/hardware/audio.nix"
-        "${system}/hardware/bluetooth.nix"
-        "${system}/hardware/yubikey.nix"
-        "${system}/hardware/ledger.nix"
-        "${system}/hardware/external-disks.nix"
-
-        "${users}"
-        "${users}/home.nix"
-        "${users}/padraic.nix"
-
-        "${secrets}"
-      ];
+      modules = [ ./Oxygen ] ++ common;
     };
   };
 
