@@ -125,7 +125,9 @@ in {
         vm;
 
       # TODO Add user ssh bootstrapping so that user ssh private key is available on initial setup
-      deployOxygen = pkgs.writeShellScriptBin "deployOxygen" ''
+      deploy = pkgs.writeShellScriptBin "deploy" ''
+        host=$1
+        ip=$2
         temp=$(mktemp -d)
 
         cleanup() {
@@ -134,22 +136,29 @@ in {
         trap cleanup EXIT
 
         install -d -m755 "$temp/persist/etc/ssh"
+        install -d -m755 "$temp/home/padraic/.ssh"
 
-        pass os/hosts/Oxygen/ssh_host_ed25519_key > "$temp/persist/etc/ssh/ssh_host_ed25519_key"
-        pass os/hosts/Oxygen/ssh_host_ed25519_key.pub > "$temp/persist/etc/ssh/ssh_host_ed25519_key.pub"
+        pass "os/hosts/$host/ssh_host_ed25519_key" > "$temp/persist/etc/ssh/ssh_host_ed25519_key"
+        pass "os/hosts/$host/ssh_host_ed25519_key.pub" > "$temp/persist/etc/ssh/ssh_host_ed25519_key.pub"
+
+        pass "os/users/$host/padraic/id_ed25519" > "$temp/home/padraic/.ssh/id_ed25519"
+        pass "os/users/$host/padraic/id_ed25519.pub" > "$temp/home/padraic/.ssh/id_ed25519.pub"
 
         chmod 600 "$temp/persist/etc/ssh/ssh_host_ed25519_key"
         chmod 644 "$temp/persist/etc/ssh/ssh_host_ed25519_key.pub"
 
+        chmod 600 "$temp/home/padraic/.ssh/id_ed25519"
+        chmod 644 "$temp/home/padraic/.ssh/id_ed25519.pub"
+
         ${inputs'.nixos-anywhere.packages.default}/bin/nixos-anywhere \
         --disk-encryption-keys /tmp/secret.key <(echo -n $(${
           l.getExe pkgs.pass
-        } show os/hosts/Oxygen/disk)) \
+        } show "os/hosts/$host/disk")) \
         --extra-files "$temp" \
         --no-reboot \
         --print-build-logs \
         --debug \
-        --flake ${self}#Oxygen root@192.168.0.214
+        --flake "${self}#$host" "root@ip"
       '';
 
       # TODO Make more general
