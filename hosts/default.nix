@@ -126,7 +126,7 @@ in {
         --no-reboot \
         --print-build-logs \
         --debug \
-        --flake "${self}#$host" "root@ip"
+        --flake "${self}#$host" "root@$ip"
       '';
 
       # TODO Make more general
