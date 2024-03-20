@@ -81,8 +81,6 @@ in {
           "${system}"
 
           "${system}/graphical/xserver.nix"
-          "${system}/graphical/stylix.nix"
-
           "${system}/hardware/keyboard.nix"
 
           "${vm'}"
