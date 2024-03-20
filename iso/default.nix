@@ -25,12 +25,20 @@ let
 
         networking = {
           hostName = "NIXOS-USB";
-
-          wireless.enable = true;
+          networkmanager.enable = true;
+          wireless.enable = false;
           wireless.networks.VM9598311.psk = "cjDpkp9F5sdf";
         };
 
         services.openssh.enable = true;
+
+        services.xserver = {
+          xkb = {
+            options = "ctrl:swapcaps";
+            layout = l.mkDefault "gb";
+          };
+        };
+        console.useXkbConfig = true;
 
         environment.systemPackages = with pkgs; [ vim git rsync ];
 
