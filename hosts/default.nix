@@ -115,8 +115,10 @@ in {
         chmod 600 "$temp/persist/etc/ssh/ssh_host_ed25519_key"
         chmod 644 "$temp/persist/etc/ssh/ssh_host_ed25519_key.pub"
 
-        chmod 600 "$temp/home/padraic/.ssh/id_ed25519"
+        chmod 700 "$temp/home/padraic/.ssh/id_ed25519"
         chmod 644 "$temp/home/padraic/.ssh/id_ed25519.pub"
+
+        chown -R padraic:users "$temp/home/padraic/.ssh"
 
         ${inputs'.nixos-anywhere.packages.default}/bin/nixos-anywhere \
         --disk-encryption-keys /tmp/secret.key <(echo -n $(${
