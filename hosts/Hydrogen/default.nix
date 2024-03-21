@@ -6,8 +6,8 @@ _:
   disko.devices.disk = import ./disk.nix;
 
   environment.sessionVariables = {
-    GDK_SCALE = "2";
-    GDK_DPI_SCALE = "0.5";
+    GDK_SCALE = "1";
+    GDK_DPI_SCALE = "1.75";
   };
 
   nixpkgs.hostPlatform = "x86_64-linux";
