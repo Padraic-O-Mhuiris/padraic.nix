@@ -23,6 +23,9 @@
     ];
   };
 
+  # Always login with padraic
+  services.xserver.displayManager.autoLogin.user = "padraic";
+
   home-manager.users.padraic = { ... }: {
     # NOTE All /home related modules should be specified here
     imports = [
