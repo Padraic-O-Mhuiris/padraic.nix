@@ -16,15 +16,7 @@ let
   emoji = monospace;
 in {
 
-  home = {
-    # NOTE Only for Hydrogen
-    # sessionVariables = {
-    #   GDK_SCALE = "2";
-    #   GDK_DPI_SCALE = "0.5";
-    # };
-    # Necessary for gtk
-    packages = [ pkgs.dconf ];
-  };
+  home.packages = [ pkgs.dconf ];
   stylix = {
     targets = {
       btop.enable = true;
