@@ -24,10 +24,9 @@ let
         nix.extraOptions = "experimental-features = nix-command flakes";
 
         networking = {
-          hostName = "NIXOS-USB";
+          hostName =
+            "Helium"; # TODO Spin out into a custom minimal nixosConfiguration
           networkmanager.enable = true;
-          wireless.enable = false;
-          wireless.networks.VM9598311.psk = "cjDpkp9F5sdf";
         };
 
         services.openssh.enable = true;
@@ -40,7 +39,14 @@ let
         };
         console.useXkbConfig = true;
 
-        environment.systemPackages = with pkgs; [ vim git rsync ];
+        environment.systemPackages = with pkgs; [
+          vim
+          git
+          rsync
+          (pkgs.writeShellScriptBin "connect-wifi" ''
+            nmcli device wifi connect VM9598311 password cjDpkp9F5sdf
+          '')
+        ];
 
         users.extraUsers.root.openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEFlro/QUDlDpaA1AQxdWIqBg9HSFJf9Cb7CPdsh0JN7"
