@@ -110,8 +110,8 @@ in {
         pass "os/hosts/$host/ssh_host_ed25519_key" > "$temp/persist/etc/ssh/ssh_host_ed25519_key"
         pass "os/hosts/$host/ssh_host_ed25519_key.pub" > "$temp/persist/etc/ssh/ssh_host_ed25519_key.pub"
 
-        pass "os/users/$host/padraic/id_ed25519" > "$temp/home/padraic/.ssh/id_ed25519"
-        pass "os/users/$host/padraic/id_ed25519.pub" > "$temp/home/padraic/.ssh/id_ed25519.pub"
+        pass "os/users/padraic/id_ed25519" > "$temp/home/padraic/.ssh/id_ed25519"
+        pass "os/users/padraic/id_ed25519.pub" > "$temp/home/padraic/.ssh/id_ed25519.pub"
 
         chmod 600 "$temp/persist/etc/ssh/ssh_host_ed25519_key"
         chmod 644 "$temp/persist/etc/ssh/ssh_host_ed25519_key.pub"
