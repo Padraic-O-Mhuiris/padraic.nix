@@ -24,10 +24,16 @@
     userDirs = {
       enable = true;
       createDirectories = true;
-      desktop = "${config.home.homeDirectory}/desktop";
       download = "${config.home.homeDirectory}/downloads";
       extraConfig = { XDG_CODE_DIR = "${config.home.homeDirectory}/code"; };
-      music = "${config.home.homeDirectory}/music";
+
+      desktop = null;
+      documents = null;
+      pictures = null;
+      publicShare = null;
+      templates = null;
+      videos = null;
+      music = null;
     };
   };
 
