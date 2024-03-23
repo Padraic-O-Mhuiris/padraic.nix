@@ -27,7 +27,7 @@
 
   fileSystems."/persist".neededForBoot = true;
 
-  # TODO Generalize this somewhere
+  # TODO Generalize this somewhere?
   environment.persistence."/persist" = {
     files = [
       "/etc/machine-id"
@@ -78,6 +78,7 @@
     '';
 
     datasets = {
+      # NOTE In the case a dataset becomes full, this is leeway to fix the problem
       reserved = {
         options = {
           canmount = "off";
@@ -86,6 +87,7 @@
         };
         type = "zfs_fs";
       };
+      # TODO Impermanence home?
       home = {
         type = "zfs_fs";
         options.mountpoint = "legacy";
