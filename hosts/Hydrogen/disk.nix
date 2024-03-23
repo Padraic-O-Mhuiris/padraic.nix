@@ -1,19 +1,23 @@
+_:
+
 {
-  nvme = {
+  disko.devices.disk.nvme = {
     type = "disk";
     device = "/dev/disk/by-id/nvme-PC_SN810_NVMe_WDC_1024GB_222320805140";
     content = {
       type = "gpt";
+
       partitions = {
-        ESP = {
+        boot = {
           type = "EF00";
-          size = "1GB";
+          size = "1G";
           content = {
             type = "filesystem";
             format = "vfat";
             mountpoint = "/boot";
           };
         };
+
         swap = {
           size = "12G";
           content = {
