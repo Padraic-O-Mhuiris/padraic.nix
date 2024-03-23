@@ -11,6 +11,8 @@ let
       inherit inputs;
       inherit l;
     };
+
+    # TODO Spin out into a custom minimal nixosConfiguration
     modules = [
       "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
       "${nixpkgs}/nixos/modules/installer/cd-dvd/channel.nix"
@@ -24,9 +26,9 @@ let
         nix.extraOptions = "experimental-features = nix-command flakes";
 
         networking = {
-          hostName =
-            "Helium"; # TODO Spin out into a custom minimal nixosConfiguration
+          hostName = "Helium";
           networkmanager.enable = true;
+          wireless.enable = false;
         };
 
         services.openssh.enable = true;
