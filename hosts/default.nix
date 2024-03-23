@@ -93,6 +93,7 @@ in {
         vm;
 
       # TODO Add user ssh bootstrapping so that user ssh private key is available on initial setup
+      # `nix run .#deploy -- <OS_NAME> <MACHINE_IP>`
       deploy = pkgs.writeShellScriptBin "deploy" ''
         host=$1
         ip=$2
