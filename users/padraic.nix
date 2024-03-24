@@ -1,4 +1,4 @@
-{ home, pkgs, ... }:
+{ home, pkgs, config, ... }:
 
 {
   # We enable this for clarity but most shell configuration is in home
@@ -30,7 +30,6 @@
     # NOTE All /home related modules should be specified here
     imports = [
       "${home}"
-      "${home}/graphical/i3"
 
       "${home}/browsers"
 
@@ -45,7 +44,10 @@
       "${home}/programs/git.nix"
       "${home}/infosec/gnupg.nix"
       "${home}/infosec/pass.nix"
-    ];
+    ] ++ (if config.networking.hostName == "Oxygen" then
+      [ "${home}/graphical/i3" ]
+    else
+      [ "${home}/graphical/hyprland" ]);
 
     home.homeDirectory = "/home/padraic";
 

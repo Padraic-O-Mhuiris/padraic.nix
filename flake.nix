@@ -17,6 +17,8 @@
 
     flake-utils = { url = "github:numtide/flake-utils"; };
 
+    hyprland = { url = "github:hyprwm/Hyprland"; };
+
     emacs = { url = "github:nix-community/emacs-overlay"; };
 
     flake-parts = { url = "github:hercules-ci/flake-parts"; };

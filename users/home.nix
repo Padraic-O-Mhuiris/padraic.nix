@@ -11,6 +11,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = {
+      inherit inputs;
       l = l.extend (_: prev: prev // inputs.home-manager.lib);
       inherit (config.system) stateVersion;
     };

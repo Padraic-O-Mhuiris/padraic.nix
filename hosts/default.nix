@@ -28,7 +28,6 @@ let
     "${system}/boot/systemd.nix"
     "${system}/fs/zfs-persist.nix"
 
-    "${system}/graphical/xserver.nix"
     "${system}/graphical/stylix.nix"
 
     "${system}/hardware/keyboard.nix"
@@ -56,7 +55,12 @@ in {
     Oxygen = nixosSystem {
       # Oxygen is my personal desktop pc
       inherit specialArgs;
-      modules = [ ./Oxygen ] ++ common;
+      modules = [
+        ./Oxygen
+
+        "${system}/graphical/xserver.nix"
+
+      ] ++ common;
     };
   };
 

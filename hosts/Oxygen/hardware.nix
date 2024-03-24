@@ -1,6 +1,9 @@
 { inputs, config, ... }:
 
-{
+let
+  pkgs-unstable =
+    inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+in {
   imports = [
     inputs.hardware.nixosModules.common-hidpi
     inputs.hardware.nixosModules.common-pc
@@ -21,6 +24,8 @@
     };
     opengl = {
       enable = true;
+      # This pins the mesa version to what is specified by Hyprland
+      package = pkgs-unstable.mesa.drivers;
       driSupport = true;
       driSupport32Bit = true;
     };
