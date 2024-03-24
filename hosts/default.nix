@@ -93,6 +93,8 @@ in {
         vm;
 
       # TODO Add user ssh bootstrapping so that user ssh private key is available on initial setup
+      # TODO Provision user ssh key with correct permissions
+      #
       # `nix run .#deploy -- <OS_NAME> <MACHINE_IP>`
       deploy = pkgs.writeShellScriptBin "deploy" ''
         host=$1
@@ -118,8 +120,6 @@ in {
 
         chmod 700 "$temp/home/padraic/.ssh/id_ed25519"
         chmod 644 "$temp/home/padraic/.ssh/id_ed25519.pub"
-
-        chown -R padraic:users "$temp/home/padraic/.ssh"
 
         ${inputs'.nixos-anywhere.packages.default}/bin/nixos-anywhere \
         --disk-encryption-keys /tmp/secret.key <(echo -n $(${
