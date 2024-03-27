@@ -38,8 +38,9 @@ let
     "${system}/hardware/ledger.nix"
     "${system}/hardware/external-disks.nix"
 
+    "${system}/virtualisation/docker.nix"
+
     "${users}"
-    "${users}/home.nix"
     "${users}/padraic.nix"
 
     "${secrets}"
@@ -86,7 +87,6 @@ in {
           "${vm'}"
 
           "${users}"
-          "${users}/home.nix"
           "${users}/padraic.nix"
         ];
       }).config.system.build)

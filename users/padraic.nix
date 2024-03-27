@@ -1,6 +1,8 @@
 { home, pkgs, ... }:
 
 {
+  imports = [ ./home.nix ];
+
   # We enable this for clarity but most shell configuration is in home
   programs.zsh.enable = true;
 
@@ -17,7 +19,7 @@
       "$6$7RhoYiLu0Xn50HZD$pOIypZUz6aALwRt4SlsckKmTFo0r6fHh5zbSTLBQGkrPuoJS.7bJirx936XensJSlkn0e472nKjzE7Y4tv7td0";
     group = "users";
     extraGroups =
-      [ "wheel" "input" "networkmanager" "audio" "pipewire" "video" ];
+      [ "wheel" "input" "networkmanager" "audio" "pipewire" "video" "docker" ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEFlro/QUDlDpaA1AQxdWIqBg9HSFJf9Cb7CPdsh0JN7"
     ];
