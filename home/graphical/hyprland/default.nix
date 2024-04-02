@@ -13,14 +13,39 @@ in {
   systemd.user.targets.hyprland-session.Unit.Wants =
     [ "xdg-desktop-autostart.target" ];
 
-  home.packages = with pkgs; [ hyprpaper ];
+  home = {
+    packages = with pkgs; [
+      hyprpaper
+      inputs.pyprland.packages.${pkgs.system}.default
+    ];
 
-  home.file.".config/hypr/hyprpaper.conf".text = ''
-    preload = ${nixos_wallpaper_png}
-    wallpaper = eDP-1,${nixos_wallpaper_png}
-    splash = false
-    ipc = off
-  '';
+    file = {
+      ".config/hypr/hyprpaper.conf".text = ''
+        preload = ${nixos_wallpaper_png}
+        wallpaper = eDP-1,${nixos_wallpaper_png}
+        splash = false
+        ipc = off
+      '';
+      ".config/hypr/pyprland.toml".text = ''
+        [pyprland]
+        plugins = [
+          "scratchpads"
+        ]
+
+        [scratchpads.terminal]
+        animation = ""
+        command = "${config.home.sessionVariables.TERMINAL} --class alacritty-dd -e ${pkgs.tmux}/bin/tmux"
+        class = "alacritty-dd"
+        lazy = true
+        size = "2560px 1600px"
+        position = "640px 400px"
+        margin = 0
+        hysteresis = 0
+        unfocus = "hide"
+        excludes = "*"
+      '';
+    };
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -39,16 +64,18 @@ in {
         disable_splash_rendering = true;
         disable_hyprland_logo = true;
       };
-      # "exec-once" = [ "hyprpaper" ];
+      animations.enabled = false;
+      "exec-once" =
+        [ "pypr --debug /dev/null > /tmp/pypr_launch_log.txt 2>&1" ];
       xwayland.force_zero_scaling = true;
-      monitor = ",highres,auto,2";
+      monitor = "eDP-1,3840x2400@60,0x0,1.5";
       bind = [
         "$mod SHIFT, E, exec, pkill Hyprland"
         "$mod, q, killactive,"
         "$mod, f, fullscreen,"
         "$mod, d, exec, ${config.home.sessionVariables.LAUNCHER}"
         "$mod, z, exec, ${config.home.sessionVariables.EDITOR}"
-        "$mod, x, exec, ${config.home.sessionVariables.TERMINAL}"
+        "$mod, x, exec, pypr toggle terminal"
       ] ++ (
         # workspaces
         # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
