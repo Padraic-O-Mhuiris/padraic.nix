@@ -35,7 +35,11 @@ in {
         kb_layout = "gb";
         kb_options = "ctrl:nocaps";
       };
-      "exec-once" = [ "hyprpaper" ];
+      misc = {
+        disable_splash_rendering = true;
+        disable_hyprland_logo = true;
+      };
+      # "exec-once" = [ "hyprpaper" ];
       xwayland.force_zero_scaling = true;
       monitor = ",highres,auto,2";
       bind = [
