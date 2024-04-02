@@ -12,6 +12,7 @@ in {
     enable = true;
     inherit package;
     client.enable = true;
+    # Sets $EDITOR
     defaultEditor = true;
     startWithUserSession = true;
     extraOptions = [ ];

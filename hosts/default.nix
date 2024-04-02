@@ -16,6 +16,7 @@ let
     inherit l;
     inherit home;
     inherit hosts;
+    inherit self;
   };
 
   common = [
@@ -28,9 +29,9 @@ let
     "${system}/boot/systemd.nix"
     "${system}/fs/zfs-persist.nix"
 
-    "${system}/graphical/xserver.nix"
     "${system}/graphical/stylix.nix"
 
+    "${system}/hardware/nvidia.nix"
     "${system}/hardware/keyboard.nix"
     "${system}/hardware/audio.nix"
     "${system}/hardware/bluetooth.nix"
@@ -57,7 +58,12 @@ in {
     Oxygen = nixosSystem {
       # Oxygen is my personal desktop pc
       inherit specialArgs;
-      modules = [ ./Oxygen ] ++ common;
+      modules = [
+        ./Oxygen
+
+        "${system}/graphical/xserver.nix"
+
+      ] ++ common;
     };
   };
 
