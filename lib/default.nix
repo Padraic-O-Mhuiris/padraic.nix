@@ -6,6 +6,7 @@ let
     isZfsFilesystem = cfg:
       l.attrsets.hasAttr "zfs"
       (cfg.boot.supportedFilesystems // cfg.boot.initrd.supportedFilesystems);
+
   });
 in {
   _module.args = { inherit l; };

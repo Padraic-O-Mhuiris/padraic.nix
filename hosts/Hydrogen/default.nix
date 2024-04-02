@@ -1,12 +1,7 @@
 _:
 
 {
-  imports = [ ./boot.nix ./hardware.nix ./monitors.nix ./disk.nix ];
-
-  environment.sessionVariables = {
-    GDK_SCALE = "1";
-    GDK_DPI_SCALE = "1.75";
-  };
+  imports = [ ./boot.nix ./hardware.nix ./disk.nix ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
   networking.hostName = "Hydrogen";

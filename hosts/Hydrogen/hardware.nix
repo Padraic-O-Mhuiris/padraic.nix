@@ -1,5 +1,12 @@
-{ inputs, ... }:
+{ inputs, pkgs, l, ... }:
 
 {
   imports = [ inputs.hardware.nixosModules.dell-xps-15-9520-nvidia ];
+
+  hardware.nvidia.prime.sync.enable = l.mkForce false;
+
+  # This pins the mesa version to what is specified by Hyprland
+  hardware.opengl.package =
+    inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.system}.mesa.drivers;
+
 }

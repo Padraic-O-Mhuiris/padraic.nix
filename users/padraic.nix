@@ -1,4 +1,4 @@
-{ home, pkgs, ... }:
+{ home, pkgs, config, ... }:
 
 {
   imports = [ ./home.nix ];
@@ -25,14 +25,10 @@
     ];
   };
 
-  # Always login with padraic
-  services.xserver.displayManager.autoLogin.user = "padraic";
-
   home-manager.users.padraic = { ... }: {
     # NOTE All /home related modules should be specified here
     imports = [
       "${home}"
-      "${home}/graphical/i3"
 
       "${home}/browsers"
 
@@ -47,7 +43,10 @@
       "${home}/programs/git.nix"
       "${home}/infosec/gnupg.nix"
       "${home}/infosec/pass.nix"
-    ];
+    ] ++ (if config.networking.hostName == "Oxygen" then
+      [ "${home}/graphical/i3" ]
+    else
+      [ "${home}/graphical/hyprland" ]);
 
     home.homeDirectory = "/home/padraic";
 
