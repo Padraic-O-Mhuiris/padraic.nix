@@ -15,15 +15,30 @@
 
     nixpkgs-master = { url = "github:nixos/nixpkgs/master"; };
 
-    flake-utils = { url = "github:numtide/flake-utils"; };
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    hyprland = { url = "github:hyprwm/Hyprland"; };
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    nix-wallpaper = { url = "github:lunik1/nix-wallpaper"; };
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    pyprland = { url = "github:hyprland-community/pyprland"; };
+    nix-wallpaper = {
+      url = "github:lunik1/nix-wallpaper";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    emacs = { url = "github:nix-community/emacs-overlay"; };
+    emacs = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     flake-parts = { url = "github:hercules-ci/flake-parts"; };
 
