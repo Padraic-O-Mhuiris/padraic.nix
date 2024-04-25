@@ -41,6 +41,8 @@
       "${home}/services/flameshot.nix"
 
       "${home}/programs/git.nix"
+      "${home}/programs/ssh.nix"
+
       "${home}/infosec/gnupg.nix"
       "${home}/infosec/pass.nix"
     ] ++ (if config.networking.hostName == "Oxygen" then
