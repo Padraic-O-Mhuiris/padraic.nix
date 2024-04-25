@@ -39,6 +39,8 @@ let
     "${system}/hardware/ledger.nix"
     "${system}/hardware/external-disks.nix"
 
+    "${system}/networking/tailscale.nix"
+
     "${system}/virtualisation/docker.nix"
 
     "${users}"
@@ -142,7 +144,7 @@ in {
       editHostSecrets = pkgs.writeShellScriptBin "editHostSecrets" ''
         EDITOR=${pkgs.vim}/bin/vim \
         SOPS_AGE_KEY=$(${pkgs.ssh-to-age}/bin/ssh-to-age -private-key <<< $(${pkgs.pass}/bin/pass show os/users/padraic/id_ed25519)) \
-        ${pkgs.sops}/bin/sops $HOME/code/nix/nixos-configuration/hosts/Oxygen/secrets.yaml
+        ${pkgs.sops}/bin/sops $1
       '';
 
     };
