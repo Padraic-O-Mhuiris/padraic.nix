@@ -4,6 +4,7 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
+    iosevka
     iosevka-comfy.comfy-motion-duo
     iosevka-comfy.comfy-fixed
     iosevka-comfy.comfy-duo
