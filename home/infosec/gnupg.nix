@@ -22,8 +22,8 @@
     extraConfig = ''
       allow-emacs-pinentry
       allow-loopback-pinentry
-      extra-socket ${config.home.sessionVariables.SSH_AUTH_SOCK}
     '';
+    # extra-socket ${config.home.sessionVariables.SSH_AUTH_SOCK}
     verbose = true;
   };
 
