@@ -6,9 +6,6 @@
   services.xserver = {
     enable = true;
 
-    # TODO Is this the best location?
-    upscaleDefaultCursor = true;
-
     # TODO Add an assertion such that a home-manager xsession is defined if this configuration is included
     desktopManager.session = [{
       name = "home-manager";
