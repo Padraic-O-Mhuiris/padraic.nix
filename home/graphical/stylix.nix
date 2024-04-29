@@ -29,12 +29,15 @@ in {
       i3.enable = true;
       xresources.enable = true;
     };
-    cursor.size = 24;
+    cursor.size =
+      if nixosConfig.networking.hostName == "Oxygen" then 24 else 48;
     fonts = {
       inherit serif sansSerif monospace emoji;
       sizes = {
-        applications = 11;
-        desktop = 10;
+        applications =
+          if nixosConfig.networking.hostName == "Oxygen" then 12 else 12;
+        desktop =
+          if nixosConfig.networking.hostName == "Oxygen" then 10 else 10;
         popups = 22;
         terminal =
           if nixosConfig.networking.hostName == "Oxygen" then 12 else 18;

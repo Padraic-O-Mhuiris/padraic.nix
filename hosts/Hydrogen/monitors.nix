@@ -11,7 +11,7 @@
       config = {
         "eDP-1" = {
           enable = true;
-          dpi = 220;
+          dpi = 160;
           primary = true;
           position = "0x0";
           mode = "3840x2400";
@@ -23,9 +23,8 @@
 
   # Adding these settings here for easier lookup
   environment.variables = {
-    GDK_SCALE = "2.2";
-    GDK_DPI_SCALE = "0.4";
+    GDK_SCALE = "1";
+    GDK_DPI_SCALE = "1";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-    XCURSOR_SIZE = "64";
   };
 }
