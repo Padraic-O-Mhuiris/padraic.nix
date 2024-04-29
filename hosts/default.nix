@@ -54,7 +54,13 @@ in {
     # Hydrogen is my personal laptop
     Hydrogen = nixosSystem {
       inherit specialArgs;
-      modules = [ ./Hydrogen "${system}/hardware/backlight.nix" ] ++ common;
+      modules = [
+        ./Hydrogen
+
+        "${system}/hardware/backlight.nix"
+        "${system}/graphical/xserver.nix"
+
+      ] ++ common;
     };
 
     Oxygen = nixosSystem {

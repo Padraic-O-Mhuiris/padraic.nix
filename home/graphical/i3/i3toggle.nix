@@ -1,4 +1,4 @@
-{ config, nixosConfig, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   i3toggle = pkgs.writeShellScriptBin "i3toggle" ''

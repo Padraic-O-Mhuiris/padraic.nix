@@ -1,4 +1,4 @@
-{ home, pkgs, config, ... }:
+{ home, pkgs, ... }:
 
 {
   imports = [ ./home.nix ];
@@ -45,10 +45,9 @@
 
       "${home}/infosec/gnupg.nix"
       "${home}/infosec/pass.nix"
-    ] ++ (if config.networking.hostName == "Oxygen" then
-      [ "${home}/graphical/i3" ]
-    else
-      [ "${home}/graphical/hyprland" ]);
+
+      "${home}/graphical/i3"
+    ];
 
     home.homeDirectory = "/home/padraic";
 
