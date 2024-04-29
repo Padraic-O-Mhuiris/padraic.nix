@@ -1,4 +1,4 @@
-{ home, pkgs, ... }:
+{ config, home, pkgs, ... }:
 
 {
   imports = [ ./home.nix ];
@@ -24,6 +24,10 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEFlro/QUDlDpaA1AQxdWIqBg9HSFJf9Cb7CPdsh0JN7"
     ];
   };
+
+  # Always login with padraic
+  services.xserver.displayManager.autoLogin.user =
+    if config.services.xserver.enable then "padraic" else null;
 
   home-manager.users.padraic = { ... }: {
     # NOTE All /home related modules should be specified here
