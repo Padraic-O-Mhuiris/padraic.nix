@@ -46,7 +46,6 @@
 
       "${home}/programs/git.nix"
       "${home}/programs/ssh.nix"
-      "${home}/programs/steam.nix"
 
       "${home}/infosec/gnupg.nix"
       "${home}/infosec/pass.nix"

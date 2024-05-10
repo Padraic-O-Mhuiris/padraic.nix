@@ -70,6 +70,7 @@ in {
         ./Oxygen
 
         "${system}/graphical/xserver.nix"
+        "${system}/programs/steam.nix"
 
       ] ++ common;
     };
