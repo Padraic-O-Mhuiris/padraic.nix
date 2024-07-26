@@ -43,6 +43,7 @@
       "${home}/services/bluetooth.nix"
       "${home}/services/redshift.nix"
       "${home}/services/flameshot.nix"
+      "${home}/services/nm.nix"
 
       "${home}/programs/git.nix"
       "${home}/programs/ssh.nix"
