@@ -19,11 +19,13 @@
     cmake
     curl
     dbus
+    dnsutils
     du-dust
     entr
     git
     file
     i7z
+    inetutils
     iw
     libnotify
     netcat
