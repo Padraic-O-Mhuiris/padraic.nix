@@ -8,10 +8,7 @@
       prime.sync.enable = true;
       forceFullCompositionPipeline = true;
     };
-    opengl = {
-      enable = true;
-      driSupport = true;
-    };
+    graphics.enable = true;
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];

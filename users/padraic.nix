@@ -26,7 +26,7 @@
   };
 
   # Always login with padraic
-  services.xserver.displayManager.autoLogin.user =
+  services.displayManager.autoLogin.user =
     if config.services.xserver.enable then "padraic" else null;
 
   home-manager.users.padraic = { ... }: {

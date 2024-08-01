@@ -3,9 +3,6 @@
 {
   environment.systemPackages = with pkgs; [ pavucontrol ];
 
-  # sound.enable is only meant for ALSA-based configurations
-  sound.enable = true;
-
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

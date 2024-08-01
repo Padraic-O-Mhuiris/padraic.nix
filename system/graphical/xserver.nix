@@ -14,6 +14,6 @@
         waitPID=$!
       '';
     }];
-    displayManager.defaultSession = "home-manager";
   };
+  services.displayManager.defaultSession = "home-manager";
 }

@@ -9,7 +9,7 @@
   hardware.nvidia.prime.sync.enable = l.mkForce false;
 
   # This pins the mesa version to what is specified by Hyprland
-  hardware.opengl.package =
+  hardware.graphics.package =
     inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.system}.mesa.drivers;
 
 }

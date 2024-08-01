@@ -26,11 +26,12 @@ in {
     # nixfmt
     nil
     marksman
+    parinfer-rust-emacs
     emacsPackages.pdf-tools
     vscode-langservers-extracted
     nodePackages_latest.prettier
     nodePackages_latest.bash-language-server
-    llvmPackages_9.clang-unwrapped
+    llvmPackages_18.clang-unwrapped
     ccls
     semgrep
     sqlfluff

@@ -6,7 +6,7 @@
     packages = with pkgs; [
       htop
       # TODO Move this somewhere
-      gnome.nautilus
+      nautilus
     ];
 
     enableNixpkgsReleaseCheck = true;

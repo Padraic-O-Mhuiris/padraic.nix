@@ -17,7 +17,7 @@
     enableScDaemon = true;
     grabKeyboardAndMouse = true;
     defaultCacheTtl = 3600;
-    pinentryFlavor = "gnome3";
+    pinentryPackage = pkgs.pinentry-gnome3;
     # TODO Condition emacs pinentry on whether emacs is installed or not
     extraConfig = ''
       allow-emacs-pinentry
@@ -26,8 +26,6 @@
     # extra-socket ${config.home.sessionVariables.SSH_AUTH_SOCK}
     verbose = true;
   };
-
-  home.packages = with pkgs; [ pinentry-gnome ];
 
   systemd.user.sessionVariables.GNUPGHOME = "${config.xdg.dataHome}/gnupg";
 }
