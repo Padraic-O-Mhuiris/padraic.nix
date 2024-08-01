@@ -4,6 +4,7 @@ let base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
 in {
   imports = [ inputs.stylix.nixosModules.stylix ];
   stylix = {
+    enable = true;
     inherit base16Scheme;
     image = pkgs.fetchurl {
       # TODO Fix this
