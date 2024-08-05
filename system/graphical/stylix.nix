@@ -1,6 +1,6 @@
 { inputs, pkgs, ... }:
 
-let base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
+let base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 in {
   imports = [ inputs.stylix.nixosModules.stylix ];
   stylix = {

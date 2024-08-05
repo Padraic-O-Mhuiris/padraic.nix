@@ -1,4 +1,4 @@
-{ config, nixosConfig, pkgs, ... }:
+{ nixosConfig, pkgs, ... }:
 
 let
   serif = {

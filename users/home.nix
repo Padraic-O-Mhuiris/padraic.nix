@@ -10,11 +10,11 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
+    sharedModules = [ inputs.sops.homeManagerModules.sops ];
     extraSpecialArgs = {
       inherit inputs self;
       l = l.extend (_: prev: prev // inputs.home-manager.lib);
       inherit (config.system) stateVersion;
-
     };
   };
 }

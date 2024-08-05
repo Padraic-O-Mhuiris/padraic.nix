@@ -7,7 +7,7 @@
       imports = [ ./nix ./lib ./hosts ./iso ];
       systems = [ "x86_64-linux" ];
       perSystem = { config, self', inputs', pkgs, system, ... }: { };
-      flake = { };
+      flake = { root = "$HOME/code/nix/padraic.nix"; };
     };
 
   inputs = {
@@ -29,6 +29,9 @@
       url = "github:lunik1/nix-wallpaper";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
     emacs = {
       url = "github:nix-community/emacs-overlay";

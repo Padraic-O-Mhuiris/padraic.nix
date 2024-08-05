@@ -29,7 +29,6 @@
     iw
     libnotify
     netcat
-    nix-index
     nix-tree
     openssl
     pciutils

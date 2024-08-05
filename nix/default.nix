@@ -1,5 +1,5 @@
 _:
 
 {
-  imports = [ ./formatter.nix ./shell.nix ./commit.nix ];
+  imports = [ ./formatter.nix ./shell.nix ./commit.nix ./secrets.nix ];
 }

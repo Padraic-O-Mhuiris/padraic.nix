@@ -63,7 +63,8 @@ let
   };
 in {
 
-  perSystem = { config, self', inputs', pkgs, system, ... }: {
-    packages.iso = iso.config.system.build.isoImage;
-  };
+  perSystem = { config, self', inputs', pkgs, system, ... }:
+    {
+      # packages.iso = iso.config.system.build.isoImage;
+    };
 }
