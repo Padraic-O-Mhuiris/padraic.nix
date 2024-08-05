@@ -48,6 +48,8 @@
       "${home}/programs/git.nix"
       "${home}/programs/ssh.nix"
 
+      "${home}/notes"
+
       "${home}/infosec/gnupg.nix"
       "${home}/infosec/pass.nix"
 
