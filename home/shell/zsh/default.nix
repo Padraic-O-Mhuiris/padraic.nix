@@ -2,7 +2,7 @@
 
 {
   imports = [
-    # ./atuin.nix
+    ./atuin.nix
     ./direnv.nix
     ./oh-my-posh.nix
     # ./starship.nix

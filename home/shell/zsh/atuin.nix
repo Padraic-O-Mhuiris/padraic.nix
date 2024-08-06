@@ -1,14 +1,15 @@
-{ config, osConfig, ... }:
+{ config, ... }:
 
 {
   programs.atuin = {
     enable = true;
     enableZshIntegration = true;
     settings = {
-      # sync_address = #TODO;
+      update_check = false;
+      sync_address = "https://api.atuin.sh"; # TODO Change
       sync_frequency = "15m";
       dialect = "uk";
-      key_path = osConfig.sops.secrets.atuin_key.path;
+      key_path = config.sops.secrets.atuin_key.path;
     };
   };
 

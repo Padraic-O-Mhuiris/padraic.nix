@@ -29,7 +29,7 @@
   services.displayManager.autoLogin.user =
     if config.services.xserver.enable then "padraic" else null;
 
-  home-manager.users.padraic = { ... }: {
+  home-manager.users.padraic = { config, osConfig, ... }: {
     # NOTE All /home related modules should be specified here
     imports = [
       "${home}"
@@ -74,6 +74,11 @@
       qbittorrent
       vlc
     ];
+
+    sops = {
+      inherit (osConfig.sops) defaultSopsFile;
+      age.sshKeyPaths = [ "${config.home.homeDirectory}/.ssh/id_ed25519" ];
+    };
 
     programs = {
       git = {

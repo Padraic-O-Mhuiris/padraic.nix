@@ -17,4 +17,5 @@
       inherit (config.system) stateVersion;
     };
   };
+
 }
