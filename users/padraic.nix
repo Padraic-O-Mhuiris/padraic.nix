@@ -60,7 +60,7 @@
 
     # TODO Move these to somewhere
     home.packages = with pkgs; [
-      # gimp-with-plugins
+      gimp-with-plugins
       zoom-us
       slack
       element-desktop
