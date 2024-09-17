@@ -1,4 +1,10 @@
-{ inputs, pkgs, l, ... }: {
+{
+  inputs,
+  pkgs,
+  l,
+  ...
+}:
+{
   imports = [
     inputs.hardware.nixosModules.common-hidpi
     inputs.hardware.nixosModules.dell-xps-15-9520-nvidia

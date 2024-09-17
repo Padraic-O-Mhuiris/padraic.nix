@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   programs.atuin = {
     enable = true;
     enableZshIntegration = true;
@@ -18,8 +19,12 @@
       Description = "Initialises the atuin daemon";
       After = "network.target";
     };
-    Install = { WantedBy = [ "default.target" ]; };
-    Service = { ExecStart = "${pkgs.atuin}/bin/atuin daemon"; };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.atuin}/bin/atuin daemon";
+    };
   };
 
   sops.secrets.atuin_key = { };

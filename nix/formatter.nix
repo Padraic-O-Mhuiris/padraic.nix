@@ -1,1 +1,7 @@
-_: { perSystem = { pkgs, ... }: { formatter = pkgs.nixfmt-rfc-style; }; }
+_: {
+  perSystem =
+    { pkgs, ... }:
+    {
+      formatter = pkgs.nixfmt-rfc-style;
+    };
+}

@@ -13,7 +13,8 @@ let
     name = "Iosevka Comfy Fixed";
   };
   emoji = monospace;
-in {
+in
+{
   home.packages = [ pkgs.dconf ];
   stylix = {
     targets = {
@@ -27,18 +28,19 @@ in {
       i3.enable = true;
       xresources.enable = true;
     };
-    cursor.size =
-      if nixosConfig.networking.hostName == "Oxygen" then 24 else 48;
+    cursor.size = if nixosConfig.networking.hostName == "Oxygen" then 24 else 48;
     fonts = {
-      inherit serif sansSerif monospace emoji;
+      inherit
+        serif
+        sansSerif
+        monospace
+        emoji
+        ;
       sizes = {
-        applications =
-          if nixosConfig.networking.hostName == "Oxygen" then 12 else 12;
-        desktop =
-          if nixosConfig.networking.hostName == "Oxygen" then 10 else 10;
+        applications = if nixosConfig.networking.hostName == "Oxygen" then 12 else 12;
+        desktop = if nixosConfig.networking.hostName == "Oxygen" then 10 else 10;
         popups = 22;
-        terminal =
-          if nixosConfig.networking.hostName == "Oxygen" then 12 else 18;
+        terminal = if nixosConfig.networking.hostName == "Oxygen" then 12 else 18;
       };
     };
   };

@@ -1,5 +1,10 @@
 _: {
-  imports = [ ./boot.nix ./hardware.nix ./disk.nix ./monitors.nix ];
+  imports = [
+    ./boot.nix
+    ./hardware.nix
+    ./disk.nix
+    ./monitors.nix
+  ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
   networking.hostName = "Hydrogen";

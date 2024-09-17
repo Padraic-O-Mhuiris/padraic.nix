@@ -1,8 +1,7 @@
 {
   nvme = {
     type = "disk";
-    device =
-      "/dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_2TB_S4J4NF0NC04658B";
+    device = "/dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_2TB_S4J4NF0NC04658B";
     content = {
       type = "gpt";
       partitions = {

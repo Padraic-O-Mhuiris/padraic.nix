@@ -1,5 +1,9 @@
 _: {
-  imports = [ ./boot.nix ./hardware.nix ./monitors.nix ];
+  imports = [
+    ./boot.nix
+    ./hardware.nix
+    ./monitors.nix
+  ];
 
   # TODO Make into a regular import
   disko.devices.disk = import ./disk.nix;

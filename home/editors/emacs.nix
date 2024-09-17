@@ -1,6 +1,8 @@
 { pkgs, ... }:
-let package = pkgs.emacs-unstable;
-in {
+let
+  package = pkgs.emacs-unstable;
+in
+{
   programs.emacs = {
     enable = true;
     inherit package;
@@ -19,7 +21,13 @@ in {
   home.packages = with pkgs; [
     (ripgrep.override { withPCRE2 = true; })
     fd
-    (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
+    (aspellWithDicts (
+      dicts: with dicts; [
+        en
+        en-computers
+        en-science
+      ]
+    ))
     rust-analyzer
     # nixfmt
     nil

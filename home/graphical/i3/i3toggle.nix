@@ -308,5 +308,12 @@ let
 
     main "$@"
   '';
-  # TODO Find a cleaner solution to this
-in { home.packages = with pkgs; [ xdotool wmctrl i3toggle ]; }
+in
+# TODO Find a cleaner solution to this
+{
+  home.packages = with pkgs; [
+    xdotool
+    wmctrl
+    i3toggle
+  ];
+}

@@ -1,7 +1,7 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   # TODO Can this be derived somewhat rather than a static path
-  home.sessionVariables.SSH_AUTH_SOCK =
-    "/run/user/1000/gnupg/d.u7ukbdjqgf6bp5z34ihyfrkj/S.gpg-agent";
+  home.sessionVariables.SSH_AUTH_SOCK = "/run/user/1000/gnupg/d.u7ukbdjqgf6bp5z34ihyfrkj/S.gpg-agent";
 
   programs.gpg = {
     enable = true;

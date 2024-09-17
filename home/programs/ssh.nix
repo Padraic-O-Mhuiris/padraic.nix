@@ -1,10 +1,13 @@
 { config, ... }:
 let
-  remoteForwards = [{
-    host.address = config.home.sessionVariables.SSH_AUTH_SOCK;
-    bind.address = config.home.sessionVariables.SSH_AUTH_SOCK;
-  }];
-in {
+  remoteForwards = [
+    {
+      host.address = config.home.sessionVariables.SSH_AUTH_SOCK;
+      bind.address = config.home.sessionVariables.SSH_AUTH_SOCK;
+    }
+  ];
+in
+{
   programs.ssh = {
     enable = true;
     # Build this programatically given the config elsewhere

@@ -1,4 +1,9 @@
-{ config, l, pkgs, ... }:
+{
+  config,
+  l,
+  pkgs,
+  ...
+}:
 let
   package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
     extraPolicies = {
@@ -28,7 +33,9 @@ let
       OfferToSaveLoginsDefault = false;
       PasswordManagerEnabled = false;
       HardwareAcceleration = true;
-      InstallAddonsPermission = { Default = true; };
+      InstallAddonsPermission = {
+        Default = true;
+      };
       EnableTrackingProtection = {
         Value = true;
         Locked = true;
@@ -62,58 +69,62 @@ let
     force = true;
     engines = {
       "Nix Packages" = {
-        urls = [{
-          template = "https://search.nixos.org/packages";
-          params = [
-            {
-              name = "type";
-              value = "packages";
-            }
-            {
-              name = "query";
-              value = "{searchTerms}";
-            }
-          ];
-        }];
-        icon =
-          "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+        urls = [
+          {
+            template = "https://search.nixos.org/packages";
+            params = [
+              {
+                name = "type";
+                value = "packages";
+              }
+              {
+                name = "query";
+                value = "{searchTerms}";
+              }
+            ];
+          }
+        ];
+        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
         definedAliases = [ "@np" ];
       };
       "NixOS Options" = {
-        urls = [{
-          template = "https://search.nixos.org/options";
-          params = [
-            {
-              name = "type";
-              value = "options";
-            }
-            {
-              name = "query";
-              value = "{searchTerms}";
-            }
-          ];
-        }];
-        icon =
-          "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+        urls = [
+          {
+            template = "https://search.nixos.org/options";
+            params = [
+              {
+                name = "type";
+                value = "options";
+              }
+              {
+                name = "query";
+                value = "{searchTerms}";
+              }
+            ];
+          }
+        ];
+        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
         definedAliases = [ "@no" ];
       };
       "HomeManager Options" = {
-        urls = [{
-          template = "https://mipmip.github.io/home-manager-option-search/";
-          params = [{
-            name = "query";
-            value = "{searchTerms}";
-          }];
-        }];
-        icon =
-          "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+        urls = [
+          {
+            template = "https://mipmip.github.io/home-manager-option-search/";
+            params = [
+              {
+                name = "query";
+                value = "{searchTerms}";
+              }
+            ];
+          }
+        ];
+        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
         definedAliases = [ "@nho" ];
       };
 
       "Rust Crates" = {
-        urls = [{ template = "https://docs.rs/{searchTerms}"; }];
-        icon =
-          "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+        urls = [ { template = "https://docs.rs/{searchTerms}"; } ];
+        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
         definedAliases = [ "@rc" ];
       };
     };
@@ -142,7 +153,8 @@ let
     "svg.context-properties.content.enabled" = true;
     "network.protocol-handler.external.zoommtg" = true; # Needed for zoom
   };
-in {
+in
+{
   programs.firefox = {
     enable = true;
     inherit package;

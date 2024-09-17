@@ -1,7 +1,13 @@
 # This is an independent module which extracts the shared configuration for the zpool portion of a disko-based
 # impermanent zfs disk partition scheme. All that is required in addition is the configuration of the disks
 # themeselves which should be coupled with the specific host configuration
-{ inputs, pkgs, l, ... }: {
+{
+  inputs,
+  pkgs,
+  l,
+  ...
+}:
+{
   imports = [
     inputs.disko.nixosModules.disko
     inputs.impermanence.nixosModules.impermanence
@@ -11,8 +17,14 @@
     initrd.postDeviceCommands = l.mkAfter ''
       zfs rollback -r rpool/root@empty
     '';
-    kernelParams = [ "nohibernate" "zfs.zfs_arc_max=17179869184" ];
-    supportedFilesystems = [ "vfat" "zfs" ];
+    kernelParams = [
+      "nohibernate"
+      "zfs.zfs_arc_max=17179869184"
+    ];
+    supportedFilesystems = [
+      "vfat"
+      "zfs"
+    ];
     zfs = {
       devNodes = "/dev/disk/by-id/";
       forceImportAll = true;
@@ -58,8 +70,7 @@
       dnodesize = "auto";
       encryption = "aes-256-gcm";
       keyformat = "passphrase";
-      keylocation =
-        "file:///tmp/secret.key"; # NOTE must be set during initial installation step
+      keylocation = "file:///tmp/secret.key"; # NOTE must be set during initial installation step
       mountpoint = "none";
       normalization = "formD";
       relatime = "on";

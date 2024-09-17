@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   users = {
     defaultUserShell = pkgs.bashInteractive;
     mutableUsers = false;

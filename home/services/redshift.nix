@@ -1,4 +1,5 @@
-{ nixosConfig, ... }: {
+{ nixosConfig, ... }:
+{
   services.redshift = {
     inherit (nixosConfig.location) latitude longitude;
     enable = true;

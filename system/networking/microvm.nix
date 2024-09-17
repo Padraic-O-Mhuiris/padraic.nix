@@ -1,5 +1,4 @@
-_:
-{
+_: {
   # systemd.network.enable = true;
 
   # systemd.network.networks."10-lan" = {

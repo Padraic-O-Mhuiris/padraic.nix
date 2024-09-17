@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
-let inherit (config.stylix.fonts) sansSerif sizes;
-in {
+let
+  inherit (config.stylix.fonts) sansSerif sizes;
+in
+{
   services.dunst = {
     enable = true;
     iconTheme = {

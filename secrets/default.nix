@@ -1,4 +1,10 @@
-{ inputs, hosts, config, ... }: {
+{
+  inputs,
+  hosts,
+  config,
+  ...
+}:
+{
   imports = [ inputs.sops.nixosModules.sops ];
 
   sops = {
