@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   boot.loader = {
     efi = {
       canTouchEfiVariables = true;

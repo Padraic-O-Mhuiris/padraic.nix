@@ -1,5 +1,4 @@
 { config, l, pkgs, ... }:
-
 let
   package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
     extraPolicies = {
@@ -59,7 +58,7 @@ let
   };
 
   search = {
-    default = "DuckDuckGo";
+    default = "Google";
     force = true;
     engines = {
       "Nix Packages" = {

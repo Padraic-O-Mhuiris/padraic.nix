@@ -1,5 +1,4 @@
 { l, config, ... }:
-
 l.mkIf config.services.xserver.enable {
   services.xserver = {
     xkb = {

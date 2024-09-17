@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   disko.devices.disk.nvme = {
     type = "disk";
     device = "/dev/disk/by-id/nvme-PC_SN810_NVMe_WDC_1024GB_222320805140";

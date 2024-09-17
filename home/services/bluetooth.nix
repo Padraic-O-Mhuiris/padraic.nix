@@ -1,5 +1,1 @@
-_:
-
-{
-  services.blueman-applet.enable = true;
-}
+_: { services.blueman-applet.enable = true; }

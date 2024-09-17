@@ -2,7 +2,7 @@ _: {
   perSystem = { config, self', inputs', pkgs, system, ... }: {
     devShells.default = pkgs.mkShell {
       packages = with pkgs; [
-        nixfmt
+        nixfmt-rfc-style
         statix
         git
         nodePackages.prettier

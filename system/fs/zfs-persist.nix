@@ -1,10 +1,7 @@
 # This is an independent module which extracts the shared configuration for the zpool portion of a disko-based
 # impermanent zfs disk partition scheme. All that is required in addition is the configuration of the disks
 # themeselves which should be coupled with the specific host configuration
-
-{ inputs, pkgs, l, ... }:
-
-{
+{ inputs, pkgs, l, ... }: {
   imports = [
     inputs.disko.nixosModules.disko
     inputs.impermanence.nixosModules.impermanence
@@ -124,5 +121,4 @@
       };
     };
   };
-
 }

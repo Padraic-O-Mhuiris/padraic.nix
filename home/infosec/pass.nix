@@ -1,6 +1,4 @@
-{ config, ... }:
-
-{
+{ config, ... }: {
   # TODO Add systemd one-shot to download repo if it doesn't exist
 
   programs.password-store = {

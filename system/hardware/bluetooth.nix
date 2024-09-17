@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 # https://discourse.nixos.org/t/bluetooth-troubles/38940/11
 {
   hardware.bluetooth = {

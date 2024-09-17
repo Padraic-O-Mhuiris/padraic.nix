@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 let
   i3toggle = pkgs.writeShellScriptBin "i3toggle" ''
     print_help() {
@@ -309,6 +308,5 @@ let
 
     main "$@"
   '';
-
   # TODO Find a cleaner solution to this
 in { home.packages = with pkgs; [ xdotool wmctrl i3toggle ]; }

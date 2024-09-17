@@ -1,8 +1,5 @@
 # Importing this modules offloads display manager configuration to the home config
-
-{ pkgs, ... }:
-
-{
+{ pkgs, ... }: {
   services.xserver = {
     enable = true;
 

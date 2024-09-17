@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   programs.gnome-disks.enable = true;
 
   services.udisks2 = {

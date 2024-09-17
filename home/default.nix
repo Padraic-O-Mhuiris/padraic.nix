@@ -1,5 +1,4 @@
 { stateVersion, pkgs, config, nixosConfig, ... }: {
-
   imports = [ ./programs ];
 
   home = {

@@ -1,6 +1,4 @@
-{ l, pkgs, nixosConfig, ... }:
-
-{
+{ l, pkgs, nixosConfig, ... }: {
   xsession = {
     enable = true;
     scriptPath = ".hm-xsession";

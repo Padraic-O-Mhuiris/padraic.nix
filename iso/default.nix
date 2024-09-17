@@ -1,8 +1,6 @@
 # This configuration produces a package "iso" which is an iso image of a base nix configuration image.
 # Used in order to bootstrap nixos installations
-
 { inputs, l, ... }:
-
 let
   inherit (inputs) nixpkgs;
 
@@ -18,7 +16,6 @@ let
       "${nixpkgs}/nixos/modules/installer/cd-dvd/channel.nix"
 
       ({ pkgs, l, ... }: {
-
         nixpkgs.hostPlatform = l.mkDefault "x86_64-linux";
         nixpkgs.config.allowUnfree = true;
 
@@ -62,7 +59,6 @@ let
     ];
   };
 in {
-
   perSystem = { config, self', inputs', pkgs, system, ... }:
     {
       # packages.iso = iso.config.system.build.isoImage;

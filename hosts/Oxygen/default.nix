@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   imports = [ ./boot.nix ./hardware.nix ./monitors.nix ];
 
   # TODO Make into a regular import

@@ -1,7 +1,4 @@
-{ inputs, config, l, pkgs, ... }:
-
-{
-
+{ inputs, config, l, pkgs, ... }: {
   imports = [ ./nixpkgs.nix ./substituters.nix ];
 
   nix = {

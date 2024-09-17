@@ -1,5 +1,4 @@
 { self, inputs, l, ... }:
-
 let
   inherit (l) nixosSystem;
 
@@ -48,7 +47,6 @@ let
 
     "${secrets}"
   ];
-
 in {
   flake.nixosConfigurations = {
     # Hydrogen is my personal laptop
@@ -59,7 +57,6 @@ in {
 
         "${system}/hardware/backlight.nix"
         "${system}/graphical/xserver.nix"
-
       ] ++ common;
     };
 
@@ -71,14 +68,12 @@ in {
 
         "${system}/graphical/xserver.nix"
         "${system}/programs/steam.nix"
-
       ] ++ common;
     };
   };
 
   perSystem = { inputs', pkgs, ... }: {
     packages = {
-
       # NOTE nix run .\#vm -- --display gtk,full-screen=on,grab-on-hover=on -smp cpus=8 -m size=8192
       #
       # TODO Figure out how to run the vm with proper screen resolution
@@ -146,7 +141,6 @@ in {
       #   --debug \
       #   --flake "${self}#$host" "root@$ip"
       # '';
-
     };
   };
 }

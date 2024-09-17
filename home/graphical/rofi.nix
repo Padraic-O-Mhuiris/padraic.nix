@@ -1,6 +1,4 @@
-{ config, l, ... }:
-
-{
+{ config, l, ... }: {
   programs.rofi.enable = true;
 
   home.sessionVariables."LAUNCHER" =

@@ -1,6 +1,4 @@
-{ config, pkgs, ... }:
-
-{
+{ config, pkgs, ... }: {
   environment.systemPackages = [ pkgs.tailscale ];
 
   sops.secrets.tailscale_auth = { };

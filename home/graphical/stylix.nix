@@ -1,5 +1,4 @@
 { nixosConfig, pkgs, ... }:
-
 let
   serif = {
     package = pkgs.iosevka-comfy.comfy-motion-duo;
@@ -15,7 +14,6 @@ let
   };
   emoji = monospace;
 in {
-
   home.packages = [ pkgs.dconf ];
   stylix = {
     targets = {

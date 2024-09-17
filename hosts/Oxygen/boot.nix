@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   # TODO This should ideally be host specific but some values may be globally
   # relevant
   boot = {
@@ -16,5 +14,4 @@ _:
       "rtsx_pci_sdmmc"
     ];
   };
-
 }

@@ -1,5 +1,4 @@
 { config, nixosConfig, l, pkgs, ... }:
-
 let
   modifier = "Mod4";
 
@@ -12,9 +11,7 @@ let
     "80%x95%"
   else
     "100%x100%";
-
 in {
-
   imports = [
     ../xsession.nix
     ../rofi.nix

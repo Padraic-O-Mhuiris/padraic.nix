@@ -1,5 +1,1 @@
-_:
-
-{
-  services.network-manager-applet.enable = true;
-}
+_: { services.network-manager-applet.enable = true; }

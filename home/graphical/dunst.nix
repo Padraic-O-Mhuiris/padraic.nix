@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 let inherit (config.stylix.fonts) sansSerif sizes;
 in {
   services.dunst = {

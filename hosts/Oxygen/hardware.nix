@@ -1,6 +1,4 @@
-{ inputs, ... }:
-
-{
+{ inputs, ... }: {
   imports = [
     inputs.hardware.nixosModules.common-hidpi
     inputs.hardware.nixosModules.common-pc

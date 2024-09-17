@@ -1,8 +1,6 @@
 { pkgs, ... }:
-
 let package = pkgs.emacs-unstable;
 in {
-
   programs.emacs = {
     enable = true;
     inherit package;

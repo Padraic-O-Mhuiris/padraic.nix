@@ -1,5 +1,4 @@
 { inputs, config, pkgs, ... }:
-
 let
   wallpaper =
     inputs.nix-wallpaper.packages.${pkgs.system}.default.overrideAttrs {

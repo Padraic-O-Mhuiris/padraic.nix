@@ -1,6 +1,4 @@
-{ config, home, pkgs, ... }:
-
-{
+{ config, home, pkgs, ... }: {
   imports = [ ./home.nix ];
 
   # We enable this for clarity but most shell configuration is in home
