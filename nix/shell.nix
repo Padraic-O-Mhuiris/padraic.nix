@@ -17,6 +17,7 @@ _: {
           nodePackages.prettier
           sops
           ssh-to-age
+          hcloud
         ];
         DIRENV_LOG_FORMAT = "";
         shellHook = ''

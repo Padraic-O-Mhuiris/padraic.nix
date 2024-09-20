@@ -79,6 +79,15 @@ in
         "${system}/programs/steam.nix"
       ] ++ common;
     };
+
+    Carbon = nixosSystem {
+      inherit specialArgs;
+
+      modules = [
+        ./Carbon
+        "${system}/nix"
+      ];
+    };
   };
 
   perSystem =

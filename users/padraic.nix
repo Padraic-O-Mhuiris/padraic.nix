@@ -50,6 +50,7 @@
         "${home}/shell/zsh"
 
         "${home}/editors/emacs.nix"
+        "${home}/editors/helix.nix"
 
         "${home}/services/bluetooth.nix"
         "${home}/services/redshift.nix"
