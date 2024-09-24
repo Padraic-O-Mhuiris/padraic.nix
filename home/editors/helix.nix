@@ -18,12 +18,7 @@
         file-picker.hidden = false;
       };
       keys.normal = {
-        "C-g" = [
-          ":new"
-          ":insert-output ${pkgs.lazygit}/bin/lazygit"
-          ":buffer-close!"
-          ":redraw"
-        ];
+        "C-g" = ":sh tmux popup -d \"#{pane_current_path}\" -xC -yC -w80% -h80% -E ${pkgs.lazygit}/bin/lazygit";
       };
     };
     languages.language = [
