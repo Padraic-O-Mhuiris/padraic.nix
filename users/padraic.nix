@@ -48,7 +48,7 @@
         "${home}/browsers"
 
         "${home}/shell/zsh"
-        "${home}/editors/helix"
+        "${home}/editors/helix.nix"
 
         "${home}/services/bluetooth.nix"
         "${home}/services/redshift.nix"

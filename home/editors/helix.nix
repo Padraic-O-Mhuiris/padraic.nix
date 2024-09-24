@@ -6,6 +6,7 @@
     defaultEditor = true;
     extraPackages = with pkgs; [ nixd ];
     settings = {
+      theme = "catppuccin_mocha";
       editor = {
         cursor-shape = {
           normal = "block";
