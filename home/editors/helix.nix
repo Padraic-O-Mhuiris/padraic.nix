@@ -3,11 +3,26 @@
 {
   programs.helix = {
     enable = true;
+    defaultEditor = true;
+    extraPackages = with pkgs; [ nixd ];
     settings = {
-      editor.cursor-shape = {
-        normal = "block";
-        insert = "bar";
-        select = "underline";
+      editor = {
+        cursor-shape = {
+          normal = "block";
+          insert = "bar";
+          select = "underline";
+        };
+        bufferline = "multiple";
+        line-number = "relative";
+        file-picker.hidden = false;
+      };
+      keys.normal = {
+        "C-g" = [
+          ":new"
+          ":insert-output ${pkgs.lazygit}/bin/lazygit"
+          ":buffer-close!"
+          ":redraw"
+        ];
       };
     };
     languages.language = [
