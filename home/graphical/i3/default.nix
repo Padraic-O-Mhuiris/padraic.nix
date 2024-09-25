@@ -8,9 +8,8 @@
 let
   modifier = "Mod4";
 
-  terminalScreenRatio = if nixosConfig.networking.hostName == "Oxygen" then "60%x80%" else "80%x80%";
+  terminalScreenRatio = "95%x95%";
 
-  editorScreenRatio = if nixosConfig.networking.hostName == "Oxygen" then "80%x95%" else "100%x100%";
 in
 {
   imports = [
@@ -35,9 +34,8 @@ in
         "${modifier}+q" = "kill";
 
         "${modifier}+x" = ''
-          exec --no-startup-id "i3toggle -t -mt -acc -d ${terminalScreenRatio} -- ${config.home.sessionVariables.TERMINAL} -e ${l.getExe pkgs.tmux}"
+          exec --no-startup-id "i3toggle -t -acc -d ${terminalScreenRatio} -- ${config.home.sessionVariables.TERMINAL} -e ${l.getExe pkgs.tmux}"
         '';
-        "${modifier}+z" = ''exec --no-startup-id "i3toggle -t -mt -acc -d ${editorScreenRatio} $EDITOR"'';
       };
       defaultWorkspace = "workspace number 1";
       gaps = {

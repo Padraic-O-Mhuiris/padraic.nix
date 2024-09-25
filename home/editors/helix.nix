@@ -4,10 +4,15 @@
   programs.helix = {
     enable = true;
     defaultEditor = true;
-    extraPackages = with pkgs; [ nixd ];
+    extraPackages = with pkgs; [
+      nil
+      nixd
+      nodePackages.bash-language-server
+    ];
     settings = {
       theme = "catppuccin_mocha";
       editor = {
+        mouse = false;
         cursor-shape = {
           normal = "block";
           insert = "bar";

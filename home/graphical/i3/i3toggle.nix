@@ -225,11 +225,6 @@ let
         r) x=$((offset_x + screen_width - 1));  x_inc=$(((x_pos - x) / 4));;
       esac
       i3-msg -q -- "[id=\"$window_id\"] move to scratchpad;[id=\"$window_id\"] scratchpad show;[id=\"$window_id\"] move position $x px $y px;[id=\"$window_id\"] resize set $width px $height px"
-      debug 'Starting show animation'
-      while [[ ($x_inc -lt 0 && $x -gt $x_end) || ($x_inc -gt 0 && $x -lt $x_end) || ($y_inc -lt 0 && $y -gt $y_end) || ($y_inc -gt 0 && $y -lt $y_end) ]]; do
-        animate
-      done
-      debug 'Animation completed'
       i3-msg -q -- "[id=\"$window_id\"] move position $x_pos px $y_pos px"
     }
 
@@ -247,54 +242,9 @@ let
           l) x_end=$((offset_x - width));             x_inc=$(((x_end - x_pos) / 20));;
           r) x_end=$((offset_x + screen_width - 1));  x_inc=$(((x_end - x_pos) / 20));;
         esac
-        debug 'Starting hide animation'
-        while [[ ($x_inc -gt 0 && $x -lt $x_end) || ($x_inc -lt 0 && $x -gt $x_end) || ($y_inc -gt 0 && $y -lt $y_end) || ($y_inc -lt 0 && $y -gt $y_end) ]]; do
-          animate
-        done
-        debug 'Animation completed'
       fi
 
       i3-msg -q -- "[id=\"$window_id\"] move to scratchpad;"
-    }
-
-    animate() {
-      debug 'Moving to [' "$x" "$y" '] with increment [' "$x_inc" "$y_inc" ']'
-      i3-msg -q -- "[id=\"$window_id\"] move position $x px $y px"
-      y=$((y + y_inc))
-      x=$((x + x_inc))
-      if [[ ($x -lt $x_pos && $x_inc -le 0) || ($x -gt $x_pos && $x_inc -ge 0) ]]; then
-        x_inc=$((x_inc * 125 / 100))
-      else
-        x_inc=$((x_inc * 100 / 125))
-      fi
-      if [[ ($y -lt $y_pos && $y_inc -le 0) || ($y -gt $y_pos && $y_inc -ge 0) ]]; then
-        y_inc=$((y_inc * 125 / 100))
-      else
-        y_inc=$((y_inc * 100 / 125))
-      fi
-      sleep "$animation_frame_delay"
-    }
-
-    create_urxvt_wrapper() {
-        local wrapper_file
-        wrapper_file="$wid_file$(if [ -n "$wait" ]; then printf '_W'; fi).sh"
-        if [ -f "$wrapper_file" ] && [ -x "$wrapper_file" ]; then
-          debug 'Wrapper' "$wrapper_file" 'file already exists.'
-        else
-          debug 'Creating wrapper file' "$wrapper_file" 'with URxvt command wrapper'
-          printf '#!/bin/bash\n' > "$wrapper_file"
-          printf 'clear\n' >> "$wrapper_file"
-          printf '%s\n' "$command" >> "$wrapper_file"
-          if [ -n "$wait" ]; then
-            printf 'printf "\\e[?25l"\n' >> "$wrapper_file"
-            printf 'read -r -n1\n' >> "$wrapper_file"
-          fi
-          chmod u+x "$wrapper_file"
-          if [ -n "$verbose" ]; then
-            cat "$wrapper_file"
-          fi
-        fi
-        command="urxvt $urxvt_opts -e '$wrapper_file'"
     }
 
     debug() {
