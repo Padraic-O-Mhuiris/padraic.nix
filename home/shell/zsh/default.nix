@@ -5,7 +5,7 @@
     ./direnv.nix
     ./oh-my-posh.nix
     # ./starship.nix
-    ./zoxide.nix
+    # ./zoxide.nix
     ./tmux.nix
     ./nix-index-database.nix
   ];

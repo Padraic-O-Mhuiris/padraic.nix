@@ -15,7 +15,7 @@ in
   imports = [
     ../xsession.nix
     ../rofi.nix
-    ../alacritty.nix
+    # ../alacritty.nix
     ../fonts.nix
     ../stylix.nix
     ../dunst.nix
@@ -34,7 +34,7 @@ in
         "${modifier}+q" = "kill";
 
         "${modifier}+x" = ''
-          exec --no-startup-id "i3toggle -t -acc -d ${terminalScreenRatio} -- ${config.home.sessionVariables.TERMINAL} -e ${l.getExe pkgs.tmux}"
+          exec --no-startup-id "i3toggle -t -acc -d ${terminalScreenRatio} -- ${config.home.sessionVariables.TERMINAL}"
         '';
       };
       defaultWorkspace = "workspace number 1";

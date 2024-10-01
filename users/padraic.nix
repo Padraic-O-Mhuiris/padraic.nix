@@ -47,7 +47,9 @@
 
         "${home}/browsers"
 
-        "${home}/shell/zsh"
+        "${home}/terminal"
+
+        # "${home}/shell/zsh"
         "${home}/editors/helix.nix"
 
         "${home}/services/bluetooth.nix"

@@ -4,5 +4,6 @@ _: {
     ./shell.nix
     ./commit.nix
     ./secrets.nix
+    ./packages
   ];
 }
