@@ -4,6 +4,9 @@
   inputs,
   ...
 }:
+let
+  weztermPkg = pkgs.wezterm;
+in
 {
   imports = [
     ./atuin.nix
@@ -14,43 +17,49 @@
 
   # -- Wezterm ---
 
-  home.packages = with pkgs; [ wezterm ];
+  home.packages =
+    [ weztermPkg ]
+    ++ (with pkgs; [
+      ripgrep
+      lazygit
+    ]);
+
   home.sessionVariables = {
-    TERMINAL = "${pkgs.wezterm}/bin/wezterm";
+    # WEZTERM_CONFIG_FILE = "$HOME/code/nix/wezterm.nix/wezterm.lua";
+    TERMINAL = "${weztermPkg}/bin/wezterm --config-file=$HOME/code/nix/wezterm.nix/wezterm.lua";
   };
-  xdg.configFile."wezterm/wezterm.lua".text = ''
-    --- imports
-    local wezterm = require 'wezterm';
+  # xdg.configFile."wezterm/wezterm.lua".text = ''
+  #   --- imports
+  #   local wezterm = require 'wezterm';
 
-    --- helper functions
-    local function deep_merge(t1, t2)
-      for k, v in pairs(t2) do
-        if type(v) == "table" and type(t1[k]) == "table" then
-          deep_merge(t1[k], v)
-        else
-          t1[k] = v
-        end
-      end
-      return t1
-    end
+  #   --- helper functions
+  #   local function deep_merge(t1, t2)
+  #     for k, v in pairs(t2) do
+  #       if type(v) == "table" and type(t1[k]) == "table" then
+  #         deep_merge(t1[k], v)
+  #       else
+  #         t1[k] = v
+  #       end
+  #     end
+  #     return t1
+  #   end
 
-    function file_exists(name)
-       local f=io.open(name,"r")
-       if f~=nil then io.close(f) return true else return false end
-    end
+  #   function file_exists(name)
+  #      local f=io.open(name,"r")
+  #      if f~=nil then io.close(f) return true else return false end
+  #   end
 
-    local config = {}
+  #   local config = {}
 
-    local extra_config_path = wezterm.home_dir .. "/.config/wezterm/config.lua"
-    if file_exists(extra_config_path) then
-      local extra_config = dofile(wezterm.home_dir .. "/.config/wezterm/config.lua")
-      config = deep_merge(config, extra_config)
-    end
+  #   local extra_config_path = wezterm.home_dir .. "/.config/wezterm/config.lua"
+  #   if file_exists(extra_config_path) then
+  #     local extra_config = dofile(wezterm.home_dir .. "/.config/wezterm/config.lua")
+  #     config = deep_merge(config, extra_config)
+  #   end
 
-    return config
-  '';
+  #   return config
+  # '';
 
-  # -- nix-index ---
   programs = {
     nix-index.enable = true;
     nix-index-database.comma.enable = true;
@@ -76,6 +85,10 @@
         save = 100000;
         share = true;
       };
+      # https://github.com/nix-community/home-manager/blob/2f23fa308a7c067e52dfcc30a0758f47043ec176/modules/programs/wezterm.nix#L10
+      initExtra = ''
+        source ${weztermPkg}/etc/profile.d/wezterm.sh
+      '';
       oh-my-zsh = {
         enable = true;
         plugins = [
