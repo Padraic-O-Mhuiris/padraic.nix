@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }:
 let
@@ -25,10 +26,10 @@ in
     ]);
 
   home.sessionVariables = {
-    # WEZTERM_CONFIG_FILE = "$HOME/code/nix/wezterm.nix/wezterm.lua";
-    TERMINAL = "${weztermPkg}/bin/wezterm --config-file=$HOME/code/nix/wezterm.nix/wezterm.lua";
+    TERMINAL = "${weztermPkg}/bin/wezterm";
   };
-  # xdg.configFile."wezterm/wezterm.lua".text = ''
+
+  xdg.configFile."wezterm/wezterm.lua".source = config.lib.file.mkOutOfStoreSymlink "/home/padraic/code/nix/padraic.nix/home/terminal/wezterm/wezterm.lua";
   #   --- imports
   #   local wezterm = require 'wezterm';
 
