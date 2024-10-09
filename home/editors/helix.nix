@@ -50,6 +50,11 @@
     #   };
   };
 
+  # [[language]]
+  # name = "cpp"
+  # auto-format = true
+  # formatter = { command = "${pkgs.llvmPackages_17.clang-tools}/bin/clang-format" }
+
   xdg.configFile."helix/languages.toml" = lib.mkForce {
     text = ''
       [[language]]
@@ -58,20 +63,9 @@
       formatter = { command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt" }
 
       [[language]]
-      name = "cpp"
-      auto-format = true
-      formatter = { command = "${pkgs.llvmPackages_17.clang-tools}/bin/clang-format" }
-
-      [[language]]
       name = "beancount"
       auto-format = true
       formatter = { command = "${pkgs.beancount}/bin/bean-format" } 
-
-
-      [[language]]
-      name = "cpp"
-      auto-format = true
-      formatter = { command = "${pkgs.llvmPackages_17.clang-tools}/bin/clang-format" }
 
       [[language]]
       name = "lua"

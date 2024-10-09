@@ -67,6 +67,11 @@ in
       enable = true;
       enableZshIntegration = true;
     };
+    oh-my-posh = {
+      enable = true;
+      enableZshIntegration = true;
+      useTheme = "catppuccin_mocha";
+    };
     zsh = {
       enable = true;
       autosuggestion.enable = true;
