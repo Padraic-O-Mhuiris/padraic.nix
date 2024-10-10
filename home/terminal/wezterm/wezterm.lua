@@ -54,12 +54,12 @@ config.keys = {
         mods = "CTRL|SHIFT",
         action = wezterm.action.ActivateTabRelative(1)
     }, {
-        key = 'v',
-        mods = 'CTRL|SHIFT',
+        key = '|',
+        mods = 'LEADER|SHIFT',
         action = wezterm.action.SplitHorizontal {domain = 'CurrentPaneDomain'}
     }, {
-        key = 'h',
-        mods = 'CTRL|SHIFT',
+        key = '-',
+        mods = 'LEADER',
         action = wezterm.action.SplitVertical {domain = 'CurrentPaneDomain'}
     }, --- Workspace
     {key = 's', mods = 'ALT', action = workspace.switch_workspace()}

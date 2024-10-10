@@ -25,11 +25,11 @@ in {
       enable = true;
       enableZshIntegration = true;
     };
-    oh-my-posh = {
-      enable = true;
-      enableZshIntegration = true;
-      useTheme = "tokyonight_storm";
-    };
+    # oh-my-posh = {
+    #   enable = true;
+    #   enableZshIntegration = true;
+    #   useTheme = "tokyonight_storm";
+    # };
     zsh = {
       enable = true;
       autosuggestion.enable = true;
@@ -54,6 +54,7 @@ in {
       '';
       oh-my-zsh = {
         enable = true;
+        theme = "sorin";
         plugins = [
           "git"
           "aliases"
