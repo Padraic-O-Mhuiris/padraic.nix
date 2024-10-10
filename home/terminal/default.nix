@@ -25,11 +25,11 @@ in {
       enable = true;
       enableZshIntegration = true;
     };
-    # oh-my-posh = {
-    #   enable = true;
-    #   enableZshIntegration = true;
-    #   useTheme = "catppuccin_mocha";
-    # };
+    oh-my-posh = {
+      enable = true;
+      enableZshIntegration = true;
+      useTheme = "tokyonight_storm";
+    };
     zsh = {
       enable = true;
       autosuggestion.enable = true;

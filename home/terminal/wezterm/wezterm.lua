@@ -27,7 +27,7 @@ config.use_fancy_tab_bar = true
 config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = false
 
-config.color_scheme = "Modus-Operandi"
+config.color_scheme = "tokyonight_moon"
 
 config.window_frame = {
     font = wezterm.font_with_fallback({"Berkeley Mono"}),
