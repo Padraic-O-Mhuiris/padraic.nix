@@ -19,8 +19,10 @@ config.font_size = 18
 config.freetype_load_flags = "NO_HINTING"
 config.freetype_load_target = "Normal"
 config.front_end = "WebGpu"
+
 config.max_fps = 144
-config.line_height = 1.1
+config.line_height = 1
+config.cell_width = 1
 
 config.enable_tab_bar = true
 config.use_fancy_tab_bar = true
