@@ -1,8 +1,4 @@
-{
-  lib,
-  requireFile,
-  stdenvNoCC,
-  unzip,
+{ lib, requireFile, stdenvNoCC, unzip,
 # create your own name to help reference ð style you downloaded
 # variant ? "ligaturesoff-0variant1-7variant0",
 }:
@@ -23,12 +19,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     unzip $src
   '';
 
-  outputs = [
-    "out"
-    "web"
-    "variable"
-    "variableweb"
-  ];
+  outputs = [ "out" "web" "variable" "variableweb" ];
 
   installPhase = ''
     runHook preInstall

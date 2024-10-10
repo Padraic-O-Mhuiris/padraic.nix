@@ -1,17 +1,10 @@
-{
-  config,
-  nixosConfig,
-  l,
-  pkgs,
-  ...
-}:
+{ config, nixosConfig, l, pkgs, ... }:
 let
   modifier = "Mod4";
 
-  terminalScreenRatio = "95%x95%";
+  terminalScreenRatio = "100%x100%";
 
-in
-{
+in {
   imports = [
     ../xsession.nix
     ../rofi.nix
@@ -30,7 +23,8 @@ in
       menu = config.home.sessionVariables.LAUNCHER;
       keybindings = l.mkOptionDefault {
         "${modifier}+Shift+q" = null;
-        "${modifier}+Return" = "exec ${config.xsession.windowManager.i3.config.terminal}";
+        "${modifier}+Return" =
+          "exec ${config.xsession.windowManager.i3.config.terminal}";
         "${modifier}+q" = "kill";
 
         "${modifier}+x" = ''

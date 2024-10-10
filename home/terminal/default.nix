@@ -1,14 +1,6 @@
-{
-  config,
-  pkgs,
-  inputs,
-  lib,
-  ...
-}:
-let
-  weztermPkg = pkgs.wezterm;
-in
-{
+{ config, pkgs, inputs, ... }:
+let weztermPkg = pkgs.wezterm;
+in {
   imports = [
     ./atuin.nix
     ./direnv.nix
@@ -18,48 +10,13 @@ in
 
   # -- Wezterm ---
 
-  home.packages =
-    [ weztermPkg ]
-    ++ (with pkgs; [
-      ripgrep
-      lazygit
-    ]);
+  home.packages = [ weztermPkg ] ++ (with pkgs; [ ripgrep lazygit ]);
 
-  home.sessionVariables = {
-    TERMINAL = "${weztermPkg}/bin/wezterm";
-  };
+  home.sessionVariables = { TERMINAL = "${weztermPkg}/bin/wezterm"; };
 
-  xdg.configFile."wezterm/wezterm.lua".source = config.lib.file.mkOutOfStoreSymlink "/home/padraic/code/nix/padraic.nix/home/terminal/wezterm/wezterm.lua";
-  #   --- imports
-  #   local wezterm = require 'wezterm';
-
-  #   --- helper functions
-  #   local function deep_merge(t1, t2)
-  #     for k, v in pairs(t2) do
-  #       if type(v) == "table" and type(t1[k]) == "table" then
-  #         deep_merge(t1[k], v)
-  #       else
-  #         t1[k] = v
-  #       end
-  #     end
-  #     return t1
-  #   end
-
-  #   function file_exists(name)
-  #      local f=io.open(name,"r")
-  #      if f~=nil then io.close(f) return true else return false end
-  #   end
-
-  #   local config = {}
-
-  #   local extra_config_path = wezterm.home_dir .. "/.config/wezterm/config.lua"
-  #   if file_exists(extra_config_path) then
-  #     local extra_config = dofile(wezterm.home_dir .. "/.config/wezterm/config.lua")
-  #     config = deep_merge(config, extra_config)
-  #   end
-
-  #   return config
-  # '';
+  xdg.configFile."wezterm/wezterm.lua".source =
+    config.lib.file.mkOutOfStoreSymlink
+    "/home/padraic/code/nix/padraic.nix/home/terminal/wezterm/wezterm.lua";
 
   programs = {
     nix-index.enable = true;
@@ -68,11 +25,11 @@ in
       enable = true;
       enableZshIntegration = true;
     };
-    oh-my-posh = {
-      enable = true;
-      enableZshIntegration = true;
-      useTheme = "catppuccin_mocha";
-    };
+    # oh-my-posh = {
+    #   enable = true;
+    #   enableZshIntegration = true;
+    #   useTheme = "catppuccin_mocha";
+    # };
     zsh = {
       enable = true;
       autosuggestion.enable = true;

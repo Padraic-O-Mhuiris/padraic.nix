@@ -1,11 +1,18 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
-}:
+{ pkgs, config, lib, ... }:
 
 {
+
+  xdg.configFile = {
+    "helix/config.toml".source = lib.mkForce
+      (config.lib.file.mkOutOfStoreSymlink
+        "/home/padraic/code/nix/padraic.nix/home/editors/helix/config.toml");
+    "helix/languages.toml".source = lib.mkForce
+      (config.lib.file.mkOutOfStoreSymlink
+        "/home/padraic/code/nix/padraic.nix/home/editors/helix/languages.toml");
+    "helix/ignore".source = lib.mkForce (config.lib.file.mkOutOfStoreSymlink
+      "/home/padraic/code/nix/padraic.nix/home/editors/helix/ignore");
+  };
+
   programs.helix = {
     enable = true;
     defaultEditor = true;
@@ -18,64 +25,7 @@
       ruff
       pyright
       lazygit
+      luaformatter
     ];
-    settings = {
-      theme = "catppuccin_mocha";
-      editor = {
-        mouse = false;
-        cursor-shape = {
-          normal = "block";
-          insert = "bar";
-          select = "underline";
-        };
-        bufferline = "multiple";
-        line-number = "relative";
-        file-picker.hidden = false;
-      };
-      keys.normal = {
-        # "C-g" = ":sh tmux popup -d \"#{pane_current_path}\" -xC -yC -w80% -h80% -E ${pkgs.lazygit}/bin/lazygit";
-        # "C-t" = ":sh tmux popup -d \"#{pane_current_path}\" -xC -yC -w80% -h80% -E ${config.programs.tmux.shell}";
-      };
-    };
-    ignores = [
-      "/nix/store/*"
-      ".direnv"
-    ];
-    # languages = {
-    #   language-server = {
-    #     beancount-language-server = {
-    #       command = "${pkgs.beancount-language-server}/bin/beancount-language-server";
-    #       args = [ "--stdio" ];
-    #     };
-    #   };
-  };
-
-  # [[language]]
-  # name = "cpp"
-  # auto-format = true
-  # formatter = { command = "${pkgs.llvmPackages_17.clang-tools}/bin/clang-format" }
-
-  xdg.configFile."helix/languages.toml" = lib.mkForce {
-    text = ''
-      [[language]]
-      name = "nix"
-      auto-format = true
-      formatter = { command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt" }
-
-      [[language]]
-      name = "beancount"
-      auto-format = true
-      formatter = { command = "${pkgs.beancount}/bin/bean-format" } 
-
-      [[language]]
-      name = "lua"
-      auto-format = true
-      formatter = { command = "${pkgs.luaformatter}/bin/lua-format" }
-
-      [[language]]
-      name = "python"
-      auto-format = true
-      formatter = { command = "${pkgs.python312Packages.black}/bin/black", args = ["--quiet", "-"] }
-    '';
   };
 }

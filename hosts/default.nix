@@ -1,9 +1,4 @@
-{
-  self,
-  inputs,
-  l,
-  ...
-}:
+{ self, inputs, l, ... }:
 let
   inherit (l) nixosSystem;
 
@@ -25,11 +20,8 @@ let
 
   common = [
     {
-      nixpkgs.overlays = [
-        inputs.nur.overlay
-        inputs.emacs.overlay
-        inputs.nil.overlays.default
-      ];
+      nixpkgs.overlays =
+        [ inputs.nur.overlay inputs.emacs.overlay inputs.nil.overlays.default ];
     }
 
     "${system}"
@@ -55,8 +47,7 @@ let
 
     "${secrets}"
   ];
-in
-{
+in {
   flake.nixosConfigurations = {
     # Hydrogen is my personal laptop
     Hydrogen = nixosSystem {
@@ -66,6 +57,8 @@ in
 
         "${system}/hardware/backlight.nix"
         "${system}/graphical/xserver.nix"
+
+        "${system}/programs/steam.nix"
       ] ++ common;
     };
 
@@ -83,84 +76,79 @@ in
     Carbon = nixosSystem {
       inherit specialArgs;
 
-      modules = [
-        ./Carbon
-        "${system}/nix"
-      ];
+      modules = [ ./Carbon "${system}/nix" ];
     };
   };
 
-  perSystem =
-    { inputs', pkgs, ... }:
-    {
-      packages = {
-        # NOTE nix run .\#vm -- --display gtk,full-screen=on,grab-on-hover=on -smp cpus=8 -m size=8192
-        #
-        # TODO Figure out how to run the vm with proper screen resolution
-        # TODO Add qemu flags to command
-        # inherit ((nixosSystem {
-        #   inherit specialArgs;
-        #   modules = [
-        #     {
-        #       nixpkgs.overlays = [
-        #         inputs.nur.overlay
-        #         inputs.emacs.overlay
-        #         inputs.nil.overlays.default
-        #       ];
-        #     }
+  perSystem = { inputs', pkgs, ... }: {
+    packages = {
+      # NOTE nix run .\#vm -- --display gtk,full-screen=on,grab-on-hover=on -smp cpus=8 -m size=8192
+      #
+      # TODO Figure out how to run the vm with proper screen resolution
+      # TODO Add qemu flags to command
+      # inherit ((nixosSystem {
+      #   inherit specialArgs;
+      #   modules = [
+      #     {
+      #       nixpkgs.overlays = [
+      #         inputs.nur.overlay
+      #         inputs.emacs.overlay
+      #         inputs.nil.overlays.default
+      #       ];
+      #     }
 
-        #     "${system}"
+      #     "${system}"
 
-        #     "${system}/graphical/xserver.nix"
-        #     "${system}/hardware/keyboard.nix"
+      #     "${system}/graphical/xserver.nix"
+      #     "${system}/hardware/keyboard.nix"
 
-        #     "${vm'}"
+      #     "${vm'}"
 
-        #     "${users}"
-        #     "${users}/padraic.nix"
-        #   ];
-        # }).config.system.build)
-        #   vm;
+      #     "${users}"
+      #     "${users}/padraic.nix"
+      #   ];
+      # }).config.system.build)
+      #   vm;
 
-        # TODO Add user ssh bootstrapping so that user ssh private key is available on initial setup
-        # TODO Provision user ssh key with correct permissions
-        #
-        # `nix run .#deploy -- <OS_NAME> <MACHINE_IP>`
-        # deploy = pkgs.writeShellScriptBin "deploy" ''
-        #   host=$1
-        #   ip=$2
-        #   temp=$(mktemp -d)
+      # TODO Add user ssh bootstrapping so that user ssh private key is available on initial setup
+      # TODO Provision user ssh key with correct permissions
+      #
+      # `nix run .#deploy -- <OS_NAME> <MACHINE_IP>`
+      # deploy = pkgs.writeShellScriptBin "deploy" ''
+      #   host=$1
+      #   ip=$2
+      #   temp=$(mktemp -d)
 
-        #   cleanup() {
-        #     rm -rf "$temp"
-        #   }
-        #   trap cleanup EXIT
+      #   cleanup() {
+      #     rm -rf "$temp"
+      #   }
+      #   trap cleanup EXIT
 
-        #   install -d -m755 "$temp/persist/etc/ssh"
-        #   install -d -m755 "$temp/home/padraic/.ssh"
+      #   install -d -m755 "$temp/persist/etc/ssh"
+      #   install -d -m755 "$temp/home/padraic/.ssh"
 
-        #   pass "os/hosts/$host/ssh_host_ed25519_key" > "$temp/persist/etc/ssh/ssh_host_ed25519_key"
-        #   pass "os/hosts/$host/ssh_host_ed25519_key.pub" > "$temp/persist/etc/ssh/ssh_host_ed25519_key.pub"
+      #   pass "os/hosts/$host/ssh_host_ed25519_key" > "$temp/persist/etc/ssh/ssh_host_ed25519_key"
+      #   pass "os/hosts/$host/ssh_host_ed25519_key.pub" > "$temp/persist/etc/ssh/ssh_host_ed25519_key.pub"
 
-        #   pass "os/users/padraic/id_ed25519" > "$temp/home/padraic/.ssh/id_ed25519"
-        #   pass "os/users/padraic/id_ed25519.pub" > "$temp/home/padraic/.ssh/id_ed25519.pub"
+      #   pass "os/users/padraic/id_ed25519" > "$temp/home/padraic/.ssh/id_ed25519"
+      #   pass "os/users/padraic/id_ed25519.pub" > "$temp/home/padraic/.ssh/id_ed25519.pub"
 
-        #   chmod 600 "$temp/persist/etc/ssh/ssh_host_ed25519_key"
-        #   chmod 644 "$temp/persist/etc/ssh/ssh_host_ed25519_key.pub"
+      #   chmod 600 "$temp/persist/etc/ssh/ssh_host_ed25519_key"
+      #   chmod 644 "$temp/persist/etc/ssh/ssh_host_ed25519_key.pub"
 
-        #   chmod 700 "$temp/home/padraic/.ssh/id_ed25519"
-        #   chmod 644 "$temp/home/padraic/.ssh/id_ed25519.pub"
+      #   chmod 700 "$temp/home/padraic/.ssh/id_ed25519"
+      #   chmod 644 "$temp/home/padraic/.ssh/id_ed25519.pub"
 
-        #   ${inputs'.nixos-anywhere.packages.default}/bin/nixos-anywhere \
-        #   --disk-encryption-keys /tmp/secret.key <(echo -n $(${
-        #     l.getExe pkgs.pass
-        #   } show "os/hosts/$host/disk")) \
-        #   --extra-files "$temp" \
-        #   --no-reboot \
-        #   --print-build-logs \
-        #   --debug \
-        #   --flake "${self}#$host" "root@$ip"
-        # '';
-      };
+      #   ${inputs'.nixos-anywhere.packages.default}/bin/nixos-anywhere \
+      #   --disk-encryption-keys /tmp/secret.key <(echo -n $(${
+      #     l.getExe pkgs.pass
+      #   } show "os/hosts/$host/disk")) \
+      #   --extra-files "$temp" \
+      #   --no-reboot \
+      #   --print-build-logs \
+      #   --debug \
+      #   --flake "${self}#$host" "root@$ip"
+      # '';
     };
+  };
 }
