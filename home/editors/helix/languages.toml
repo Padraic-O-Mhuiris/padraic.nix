@@ -17,3 +17,9 @@ formatter = { command = "lua-format" }
 name = "python"
 auto-format = true
 formatter = { command = "black", args = ["--quiet", "-"] }
+
+[[language]]
+name = "markdown"
+auto-format = true
+formatter= { command = "mdformat", args = ["-"] }
+

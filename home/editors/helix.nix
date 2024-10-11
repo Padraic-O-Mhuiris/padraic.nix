@@ -1,16 +1,21 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 {
-
   xdg.configFile = {
-    "helix/config.toml".source = lib.mkForce
-      (config.lib.file.mkOutOfStoreSymlink
-        "/home/padraic/code/nix/padraic.nix/home/editors/helix/config.toml");
-    "helix/languages.toml".source = lib.mkForce
-      (config.lib.file.mkOutOfStoreSymlink
-        "/home/padraic/code/nix/padraic.nix/home/editors/helix/languages.toml");
-    "helix/ignore".source = lib.mkForce (config.lib.file.mkOutOfStoreSymlink
-      "/home/padraic/code/nix/padraic.nix/home/editors/helix/ignore");
+    "helix/config.toml".source = lib.mkForce (
+      config.lib.file.mkOutOfStoreSymlink "/home/padraic/code/nix/padraic.nix/home/editors/helix/config.toml"
+    );
+    "helix/languages.toml".source = lib.mkForce (
+      config.lib.file.mkOutOfStoreSymlink "/home/padraic/code/nix/padraic.nix/home/editors/helix/languages.toml"
+    );
+    "helix/ignore".source = lib.mkForce (
+      config.lib.file.mkOutOfStoreSymlink "/home/padraic/code/nix/padraic.nix/home/editors/helix/ignore"
+    );
   };
 
   programs.helix = {
@@ -26,6 +31,8 @@
       pyright
       lazygit
       luaformatter
+      marksman
+      mdformat
     ];
   };
 }
