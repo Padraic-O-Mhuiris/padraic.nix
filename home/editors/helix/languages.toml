@@ -23,3 +23,11 @@ name = "markdown"
 auto-format = true
 formatter= { command = "mdformat", args = ["-"] }
 
+[[language]]
+name = "rust"
+auto-format = true
+formatter= { command = "rustfmt" }
+
+[[language]]
+name = "toml"
+auto-format = true

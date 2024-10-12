@@ -34,6 +34,8 @@
       marksman
       mdformat
       nixfmt-rfc-style
+      lldb_18
+      taplo
     ];
   };
 }
