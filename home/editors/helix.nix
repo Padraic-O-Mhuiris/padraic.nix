@@ -33,6 +33,7 @@
       luaformatter
       marksman
       mdformat
+      nixfmt-rfc-style
     ];
   };
 }
