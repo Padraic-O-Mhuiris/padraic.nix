@@ -8,6 +8,7 @@
 
   services.gpg-agent = {
     enable = true;
+    enableSshSupport = true;
     enableExtraSocket = true;
     enableScDaemon = true;
     grabKeyboardAndMouse = true;
