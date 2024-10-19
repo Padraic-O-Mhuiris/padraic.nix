@@ -1,4 +1,13 @@
 { config, ... }:
+let
+  # TODO is there a better way to specify these?
+  remoteForwards = [
+    {
+      bind.address = "/run/user/1000/gnupg/d.u7ukbdjqgf6bp5z34ihyfrkj/S.gpg-agent.ssh";
+      host.address = "/run/user/1000/gnupg/d.u7ukbdjqgf6bp5z34ihyfrkj/S.gpg-agent.extra";
+    }
+  ];
+in
 {
   programs.ssh = {
     enable = true;
@@ -7,10 +16,12 @@
       "Oxygen" = {
         host = "oxygen.tail684cf.ts.net";
         user = config.home.username;
+        inherit remoteForwards;
       };
       "Hydrogen" = {
         host = "hydrogen.tail684cf.ts.net";
         user = config.home.username;
+        inherit remoteForwards;
       };
     };
   };
