@@ -1,6 +1,5 @@
 { config, ... }:
 let
-  # TODO is there a better way to specify these?
   remoteForwards = [
     {
       bind.address = "/run/user/1000/gnupg/d.u7ukbdjqgf6bp5z34ihyfrkj/S.gpg-agent.ssh";
@@ -24,5 +23,9 @@ in
         inherit remoteForwards;
       };
     };
+
+    extraConfig = ''
+      StreamLocalBindUnlink yes
+    '';
   };
 }
