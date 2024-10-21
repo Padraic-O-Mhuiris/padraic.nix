@@ -20,5 +20,8 @@
     verbose = true;
   };
 
+  # # NOTE Necessary for gnupg gnome3 pinentry
+  # services.dbus.packages = [ pkgs.gcr ];
+
   systemd.user.sessionVariables.GNUPGHOME = "${config.xdg.dataHome}/gnupg";
 }
