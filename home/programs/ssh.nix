@@ -8,6 +8,8 @@ let
   ];
 in
 {
+  services.ssh-agent.enable = true;
+
   programs.ssh = {
     enable = true;
     # Build this programatically given the config elsewhere

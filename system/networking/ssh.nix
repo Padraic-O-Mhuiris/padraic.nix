@@ -2,16 +2,20 @@ _: {
   services = {
     openssh = {
       enable = true;
-      settings.PermitRootLogin = "no";
       allowSFTP = false;
       # TODO Figure out how to reproducibly automate ssh key generation from sops/initial deployment
       hostKeys = [ ];
 
       settings = {
+        PermitRootLogin = "no";
+        PasswordAuthentication = false;
+        AllowTcpForwarding = true;
+        AllowAgentForwarding = true;
+        UsePAM = true;
         X11Forwarding = false;
         KbdInteractiveAuthentication = false;
-        PasswordAuthentication = false;
         UseDns = false;
+        StreamLocalBindUnlink = "yes";
         KexAlgorithms = [
           "curve25519-sha256"
           "curve25519-sha256@libssh.org"
@@ -20,8 +24,6 @@ _: {
           "sntrup761x25519-sha512@openssh.com"
         ];
       };
-      # unbind gnupg sockets if they exists
-      extraConfig = "StreamLocalBindUnlink yes";
     };
   };
 
