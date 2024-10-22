@@ -17,11 +17,13 @@ in
       "Oxygen" = {
         host = "oxygen.tail684cf.ts.net";
         user = config.home.username;
+        forwardAgent = true;
         inherit remoteForwards;
       };
       "Hydrogen" = {
         host = "hydrogen.tail684cf.ts.net";
         user = config.home.username;
+        forwardAgent = true;
         inherit remoteForwards;
       };
     };
