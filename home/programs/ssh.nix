@@ -28,8 +28,8 @@ in
       };
     };
 
-    extraConfig = ''
-      StreamLocalBindUnlink yes
-    '';
+    # extraConfig = ''
+    #   StreamLocalBindUnlink yes
+    # '';
   };
 }
