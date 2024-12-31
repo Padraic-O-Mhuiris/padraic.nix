@@ -50,7 +50,7 @@
         "${home}/terminal"
 
         # "${home}/shell/zsh"
-        "${home}/editors/helix.nix"
+        "${home}/editors/helix"
 
         "${home}/services/bluetooth.nix"
         "${home}/services/redshift.nix"

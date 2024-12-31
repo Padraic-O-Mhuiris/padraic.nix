@@ -6,7 +6,7 @@ formatter = { command = "nixfmt" }
 [[language]]
 name = "beancount"
 auto-format = true
-formatter = { command = "bean-format" } 
+formatter = { command = "bean-format" }
 
 [[language]]
 name = "lua"
@@ -21,12 +21,12 @@ formatter = { command = "black", args = ["--quiet", "-"] }
 [[language]]
 name = "markdown"
 auto-format = true
-formatter= { command = "mdformat", args = ["-"] }
+formatter = { command = "mdformat", args = ["-"] }
 
 [[language]]
 name = "rust"
 auto-format = true
-formatter= { command = "rustfmt" }
+formatter = { command = "rustfmt" }
 
 [[language]]
 name = "toml"

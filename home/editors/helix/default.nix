@@ -25,6 +25,7 @@
       nil
       nixd
       nodePackages.bash-language-server
+      nodePackages.typescript-language-server
       lua-language-server
       llvmPackages_17.clang-tools
       ruff

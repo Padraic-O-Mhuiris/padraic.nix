@@ -20,5 +20,7 @@
     verbose = true;
   };
 
+  home.packages = with pkgs; [ pcsc-tools ];
+
   systemd.user.sessionVariables.GNUPGHOME = "${config.xdg.dataHome}/gnupg";
 }
