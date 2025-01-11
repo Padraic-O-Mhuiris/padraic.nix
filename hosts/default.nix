@@ -68,7 +68,6 @@ in
         "${system}/hardware/backlight.nix"
         "${system}/graphical/xserver.nix"
 
-        "${system}/programs/steam.nix"
       ] ++ common;
     };
 
@@ -79,7 +78,6 @@ in
         ./Oxygen
 
         "${system}/graphical/xserver.nix"
-        "${system}/programs/steam.nix"
       ] ++ common;
     };
 
