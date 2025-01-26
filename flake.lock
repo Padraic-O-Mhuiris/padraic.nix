@@ -857,22 +857,6 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/5daf0514482af3f97abaefc78a6606365c9108e2.tar.gz"
       }
     },
-    "nixpkgs-master": {
-      "locked": {
-        "lastModified": 1722511385,
-        "narHash": "sha256-M7e6TY9tY0M+MFEROkKtmnes/7Qskszt/80G+frqXJI=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "5d05a0c4e5bb1a5e2893b08faa1e332368eb13f7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1722221733,
@@ -1051,7 +1035,6 @@
         "nix-wallpaper": "nix-wallpaper",
         "nixos-anywhere": "nixos-anywhere",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-master": "nixpkgs-master",
         "nur": "nur",
         "pre-commit-hooks": "pre-commit-hooks_2",
         "sops": "sops",
